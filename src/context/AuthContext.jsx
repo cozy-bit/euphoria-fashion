@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import defaultAvatar from '../assets/images/tolibov/contact-details/user-profile-avatar.png';
+import defaultAvatar from '../assets/images/tolibov/contact-details/user-profile-avatar.webp';
 
 const AuthContext = createContext();
 

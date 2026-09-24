@@ -103,25 +103,21 @@ export default function Header() {
             {/* User Profile */}
             <Link
               to="/profile"
-              className="w-10 h-10 rounded-lg overflow-hidden border border-[#E6E6E6] hover:border-[#8A33FD] flex items-center justify-center transition-colors group"
+              className="w-10 h-10 rounded-lg bg-[#F6F6F6] hover:bg-[#8A33FD]/10 text-[#3C4242] hover:text-[#8A33FD] flex items-center justify-center transition-colors"
               aria-label="User Profile"
             >
-              <img
-                src={user?.avatar}
-                alt={user?.name}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform"
-              />
+              <User className="w-5 h-5" />
             </Link>
 
             {/* Cart Bag */}
             <Link
               to="/cart"
-              className="relative w-10 h-10 rounded-lg bg-[#8A33FD] text-white hover:bg-[#6610F2] flex items-center justify-center transition-all shadow-sm hover:shadow-md hover:shadow-[#8A33FD]/25"
+              className="relative w-10 h-10 rounded-lg bg-[#F6F6F6] hover:bg-[#8A33FD]/10 text-[#3C4242] hover:text-[#8A33FD] flex items-center justify-center transition-colors"
               aria-label="Shopping Cart"
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#F59E0B] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs">
+                <span className="absolute -top-1 -right-1 bg-[#8A33FD] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-xs">
                   {cartCount}
                 </span>
               )}

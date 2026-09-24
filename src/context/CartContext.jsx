@@ -1,52 +1,65 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { PRODUCTS } from '../data/products';
+import React, { createContext, useContext, useState } from 'react';
+import productBlueFlowerTop from '../assets/images/amirkhon/products/product-blue-flower-top.webp';
+import productLavenderHoodie from '../assets/images/amirkhon/products/product-lavender-hoodie.webp';
+import productBlackSweatshirt from '../assets/images/amirkhon/products/product-black-sweatshirt.webp';
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  // Pre-seed with initial items so the cart has lively items from start
+  // Pre-seed matching Screenshot 1 & 2
   const [cartItems, setCartItems] = useState([
     {
-      ...PRODUCTS[1], // Blue Flower Print Crop Top ($29)
+      id: 201,
       cartId: 'item-1',
+      title: 'Blue Flower Print Crop Top',
+      brand: "Euphoria Women's",
+      price: 29.00,
       selectedSize: 'M',
-      selectedColor: 'Blue',
+      selectedColor: 'Yellow',
+      shippingType: 'FREE',
+      image: productBlueFlowerTop,
       quantity: 1
     },
     {
-      ...PRODUCTS[2], // Lavender Hoodie ($49)
+      id: 202,
       cartId: 'item-2',
-      selectedSize: 'L',
+      title: 'Lavender Hoodie',
+      brand: "Nike's Brand",
+      price: 119.00,
+      selectedSize: 'XXL',
       selectedColor: 'Lavender',
+      shippingType: 'FREE',
+      image: productLavenderHoodie,
       quantity: 2
     },
     {
-      ...PRODUCTS[4], // Black Printed T-shirt ($32)
+      id: 203,
       cartId: 'item-3',
-      selectedSize: 'XL',
+      title: 'Black Sweatshirt',
+      brand: "Jhanvi's Brand",
+      price: 123.00,
+      selectedSize: 'XXL',
       selectedColor: 'Black',
-      quantity: 1
+      shippingType: '$5.00',
+      image: productBlackSweatshirt,
+      quantity: 2
     }
   ]);
 
   const [appliedCoupon, setAppliedCoupon] = useState(null);
-  const [discountAmount, setDiscountAmount] = useState(0);
+  const [discountAmount, setDiscountAmount] = useState(30.00); // $30 savings matching Screenshot 2
+  const [shippingFee] = useState(5.00);
 
-  const addToCart = (product, quantity = 1, size = 'M', color = 'Default') => {
+  const addToCart = (product, size = 'M', color = 'Default', quantity = 1) => {
     setCartItems(prev => {
-      const existingIndex = prev.findIndex(
-        item => item.id === product.id && item.selectedSize === size && item.selectedColor === color
-      );
-
-      if (existingIndex > -1) {
-        const next = [...prev];
-        next[existingIndex] = {
-          ...next[existingIndex],
-          quantity: next[existingIndex].quantity + quantity
-        };
-        return next;
+      const existing = prev.find(item => item.id === product.id && item.selectedSize === size);
+      if (existing) {
+        return prev.map(item =>
+          item.id === product.id && item.selectedSize === size
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
       }
-
       return [
         ...prev,
         {
@@ -54,6 +67,7 @@ export function CartProvider({ children }) {
           cartId: `cart-${Date.now()}-${Math.random()}`,
           selectedSize: size,
           selectedColor: color,
+          shippingType: 'FREE',
           quantity
         }
       ];
@@ -64,48 +78,35 @@ export function CartProvider({ children }) {
     setCartItems(prev => prev.filter(item => item.cartId !== cartId));
   };
 
-  const updateQuantity = (cartId, newQuantity) => {
-    if (newQuantity <= 0) {
-      removeFromCart(cartId);
-      return;
-    }
+  const updateQuantity = (cartId, delta) => {
     setCartItems(prev =>
-      prev.map(item =>
-        item.cartId === cartId ? { ...item, quantity: newQuantity } : item
-      )
+      prev
+        .map(item => {
+          if (item.cartId === cartId) {
+            const newQty = item.quantity + delta;
+            return newQty > 0 ? { ...item, quantity: newQty } : null;
+          }
+          return item;
+        })
+        .filter(Boolean)
     );
   };
 
-  const clearCart = () => {
-    setCartItems([]);
-    setAppliedCoupon(null);
-    setDiscountAmount(0);
-  };
+  const clearCart = () => setCartItems([]);
 
   const applyCoupon = (code) => {
-    if (code.toUpperCase() === 'EUPHORIA20') {
-      setAppliedCoupon('EUPHORIA20');
-      return { success: true, message: '20% Discount Applied!' };
+    if (!code) return { success: false, message: 'Please enter a code' };
+    const upper = code.trim().toUpperCase();
+    if (upper === 'EUPHORIA20' || upper === 'SAVE30' || upper === 'DISCOUNT') {
+      setAppliedCoupon(upper);
+      setDiscountAmount(30.00);
+      return { success: true, message: 'Coupon applied successfully!' };
     }
-    return { success: false, message: 'Invalid coupon code. Try EUPHORIA20' };
+    return { success: false, message: 'Invalid coupon code' };
   };
 
-  const cartSubtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-
-  const shippingFee = cartItems.length > 0 ? (cartSubtotal > 100 ? 0 : 5.00) : 0;
-
-  useEffect(() => {
-    if (appliedCoupon === 'EUPHORIA20') {
-      setDiscountAmount(cartSubtotal * 0.2);
-    } else {
-      setDiscountAmount(0);
-    }
-  }, [cartSubtotal, appliedCoupon]);
-
-  const cartTotal = Math.max(0, cartSubtotal - discountAmount + shippingFee);
+  const cartSubtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const grandTotal = Math.max(0, cartSubtotal + shippingFee - (appliedCoupon ? discountAmount : 0));
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
@@ -116,13 +117,13 @@ export function CartProvider({ children }) {
         removeFromCart,
         updateQuantity,
         clearCart,
+        cartCount,
         cartSubtotal,
         shippingFee,
         discountAmount,
         appliedCoupon,
         applyCoupon,
-        cartTotal,
-        cartCount
+        grandTotal
       }}
     >
       {children}
@@ -131,9 +132,5 @@ export function CartProvider({ children }) {
 }
 
 export function useCart() {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
-  return context;
+  return useContext(CartContext);
 }
