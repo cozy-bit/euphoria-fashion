@@ -1,0 +1,977 @@
+{
+  "timestamp": "2026-09-24T19:58:52.020Z",
+  "totalFiles": 97,
+  "totalMegabytes": "534.59",
+  "items": [
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "hero-summer-pack.png",
+      "relPath": "src/assets/images/amirkhon/home/hero-summer-pack.png",
+      "sizeMB": "0.11",
+      "sizeBytes": 117564,
+      "desc": "Hero slider banner: Summer Value Pack",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-smart-watch.png",
+      "relPath": "src/assets/images/amirkhon/home/saving-smart-watch.png",
+      "sizeMB": "0.14",
+      "sizeBytes": 151495,
+      "desc": "Big Saving Zone: Smart Watch offer",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "promo-furnishing-banner.png",
+      "relPath": "src/assets/images/amirkhon/home/promo-furnishing-banner.png",
+      "sizeMB": "0.03",
+      "sizeBytes": 29367,
+      "desc": "Promo strip: Home & Living / Furnishings",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "promo-decor-banner.png",
+      "relPath": "src/assets/images/amirkhon/home/promo-decor-banner.png",
+      "sizeMB": "0.01",
+      "sizeBytes": 5515,
+      "desc": "Promo strip: Ceramics & Decor",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-hawaiian-shorts.jpg",
+      "relPath": "src/assets/images/amirkhon/home/saving-hawaiian-shorts.jpg",
+      "sizeMB": "11.49",
+      "sizeBytes": 12051414,
+      "desc": "Big Saving Zone: Hawaiian print shorts",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-hawaiian-polo.png",
+      "relPath": "src/assets/images/amirkhon/home/saving-hawaiian-polo.png",
+      "sizeMB": "10.13",
+      "sizeBytes": 10617720,
+      "desc": "Big Saving Zone: Hawaiian polo shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-black-tshirt.png",
+      "relPath": "src/assets/images/amirkhon/home/saving-black-tshirt.png",
+      "sizeMB": "1.58",
+      "sizeBytes": 1655215,
+      "desc": "Big Saving Zone: Black crewneck t-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-printed-black-tee.jpg",
+      "relPath": "src/assets/images/amirkhon/home/saving-printed-black-tee.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Big Saving Zone: Printed typography tee",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-cargo-pants.jpg",
+      "relPath": "src/assets/images/amirkhon/home/saving-cargo-pants.jpg",
+      "sizeMB": "5.51",
+      "sizeBytes": 5779076,
+      "desc": "Big Saving Zone: Cargo track pants",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "saving-checks-shirt.jpg",
+      "relPath": "src/assets/images/amirkhon/home/saving-checks-shirt.jpg",
+      "sizeMB": "8.50",
+      "sizeBytes": 8915901,
+      "desc": "Big Saving Zone: Plaid checks shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-men-black-tee.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-men-black-tee.jpg",
+      "sizeMB": "5.88",
+      "sizeBytes": 6163457,
+      "desc": "Categories for Men: Black t-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-men-blue-polo.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-men-blue-polo.jpg",
+      "sizeMB": "8.74",
+      "sizeBytes": 9166113,
+      "desc": "Categories for Men: Blue polo shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-men-hoodies.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-men-hoodies.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Categories for Men: Lavender hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-men-checks.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-men-checks.jpg",
+      "sizeMB": "8.50",
+      "sizeBytes": 8915901,
+      "desc": "Categories for Men: Checks shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-men-urban-jacket.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-men-urban-jacket.jpg",
+      "sizeMB": "2.72",
+      "sizeBytes": 2856211,
+      "desc": "Categories for Men: Urban outerwear jacket",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-men-denim-shirt.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-men-denim-shirt.jpg",
+      "sizeMB": "1.28",
+      "sizeBytes": 1337349,
+      "desc": "Categories for Men: Blue denim shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-women-red-coat.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-women-red-coat.jpg",
+      "sizeMB": "5.76",
+      "sizeBytes": 6035909,
+      "desc": "Categories for Women: Red trench coat",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-women-denim-jacket.png",
+      "relPath": "src/assets/images/amirkhon/home/cat-women-denim-jacket.png",
+      "sizeMB": "0.11",
+      "sizeBytes": 113448,
+      "desc": "Categories for Women: Cropped denim jacket",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-women-rainbow-dress.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-women-rainbow-dress.jpg",
+      "sizeMB": "7.50",
+      "sizeBytes": 7861878,
+      "desc": "Categories for Women: Rainbow striped summer dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-women-summer-floral.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-women-summer-floral.jpg",
+      "sizeMB": "7.11",
+      "sizeBytes": 7450822,
+      "desc": "Categories for Women: Floral sundress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-women-blue-crop.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-women-blue-crop.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Categories for Women: Blue floral crop top",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "cat-women-yellow-polka.jpg",
+      "relPath": "src/assets/images/amirkhon/home/cat-women-yellow-polka.jpg",
+      "sizeMB": "6.81",
+      "sizeBytes": 7137360,
+      "desc": "Categories for Women: Yellow polka-dot dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "feedback-avatar-1.png",
+      "relPath": "src/assets/images/amirkhon/home/feedback-avatar-1.png",
+      "sizeMB": "0.01",
+      "sizeBytes": 8369,
+      "desc": "Customer Feedback: Woman laughing (yellow)",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "feedback-avatar-2.png",
+      "relPath": "src/assets/images/amirkhon/home/feedback-avatar-2.png",
+      "sizeMB": "0.01",
+      "sizeBytes": 8803,
+      "desc": "Customer Feedback: Smiling brunette in plaid",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "feedback-avatar-3.png",
+      "relPath": "src/assets/images/amirkhon/home/feedback-avatar-3.png",
+      "sizeMB": "0.01",
+      "sizeBytes": 6666,
+      "desc": "Customer Feedback: Young man smiling",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "feedback-avatar-4.png",
+      "relPath": "src/assets/images/amirkhon/home/feedback-avatar-4.png",
+      "sizeMB": "0.01",
+      "sizeBytes": 8344,
+      "desc": "Customer Feedback: Asian man looking up",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "feedback-avatar-5.png",
+      "relPath": "src/assets/images/amirkhon/home/feedback-avatar-5.png",
+      "sizeMB": "0.19",
+      "sizeBytes": 194974,
+      "desc": "Customer Feedback: Blonde model",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "feedback-avatar-6.png",
+      "relPath": "src/assets/images/amirkhon/home/feedback-avatar-6.png",
+      "sizeMB": "0.34",
+      "sizeBytes": 359587,
+      "desc": "Customer Feedback: Brunette model",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "brand-nike.png",
+      "relPath": "src/assets/images/amirkhon/home/brand-nike.png",
+      "sizeMB": "0.02",
+      "sizeBytes": 20277,
+      "desc": "Brand logo: Nike",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "brand-puma.png",
+      "relPath": "src/assets/images/amirkhon/home/brand-puma.png",
+      "sizeMB": "0.03",
+      "sizeBytes": 34780,
+      "desc": "Brand logo: Puma",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "brand-us-polo.png",
+      "relPath": "src/assets/images/amirkhon/home/brand-us-polo.png",
+      "sizeMB": "0.01",
+      "sizeBytes": 12190,
+      "desc": "Brand logo: U.S. Polo Assn.",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "home",
+      "fileName": "brand-polo-alt.png",
+      "relPath": "src/assets/images/amirkhon/home/brand-polo-alt.png",
+      "sizeMB": "0.03",
+      "sizeBytes": 26257,
+      "desc": "Brand logo: U.S. Polo Assn. emblem",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-black-tshirt-front.png",
+      "relPath": "src/assets/images/amirkhon/products/product-black-tshirt-front.png",
+      "sizeMB": "1.58",
+      "sizeBytes": 1655215,
+      "desc": "Catalog item: Black crewneck t-shirt (front)",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-black-tshirt-back.png",
+      "relPath": "src/assets/images/amirkhon/products/product-black-tshirt-back.png",
+      "sizeMB": "1.52",
+      "sizeBytes": 1592355,
+      "desc": "Catalog item: Black crewneck t-shirt (back)",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-black-tshirt-full.png",
+      "relPath": "src/assets/images/amirkhon/products/product-black-tshirt-full.png",
+      "sizeMB": "1.13",
+      "sizeBytes": 1184833,
+      "desc": "Catalog item: Black crewneck t-shirt (full body)",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-black-sweatshirt.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-black-sweatshirt.jpg",
+      "sizeMB": "5.88",
+      "sizeBytes": 6163457,
+      "desc": "Catalog item: Black casual sweatshirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-blue-polo.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-blue-polo.jpg",
+      "sizeMB": "8.74",
+      "sizeBytes": 9166113,
+      "desc": "Catalog item: Royal blue polo shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-printed-black-tee.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-printed-black-tee.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Catalog item: Printed black t-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-checks-shirt.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-checks-shirt.jpg",
+      "sizeMB": "8.50",
+      "sizeBytes": 8915901,
+      "desc": "Catalog item: Plaid checks shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-urban-jacket.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-urban-jacket.jpg",
+      "sizeMB": "2.72",
+      "sizeBytes": 2856211,
+      "desc": "Catalog item: Brown outerwear jacket",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-denim-shirt.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-denim-shirt.jpg",
+      "sizeMB": "1.28",
+      "sizeBytes": 1337349,
+      "desc": "Catalog item: Denim blue long-sleeve shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Catalog item: Lavender purple hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-white-tee-sunglasses.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-white-tee-sunglasses.jpg",
+      "sizeMB": "7.15",
+      "sizeBytes": 7501937,
+      "desc": "Catalog item: White t-shirt with sunglasses",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-blue-flower-top.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-blue-flower-top.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Catalog item: Blue flower print crop top",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-yellow-polka-dress.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-yellow-polka-dress.jpg",
+      "sizeMB": "6.81",
+      "sizeBytes": 7137360,
+      "desc": "Catalog item: Yellow polka-dot dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-women-red-coat.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-women-red-coat.jpg",
+      "sizeMB": "5.76",
+      "sizeBytes": 6035909,
+      "desc": "Catalog item: Red trench coat",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-women-rainbow-dress.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-women-rainbow-dress.jpg",
+      "sizeMB": "7.50",
+      "sizeBytes": 7861878,
+      "desc": "Catalog item: Rainbow summer dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-women-summer-floral.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-women-summer-floral.jpg",
+      "sizeMB": "7.11",
+      "sizeBytes": 7450822,
+      "desc": "Catalog item: Summer floral dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-white-dress-order.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-white-dress-order.jpg",
+      "sizeMB": "4.65",
+      "sizeBytes": 4875438,
+      "desc": "Catalog item: White cots dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "products",
+      "fileName": "product-pink-hoodie.jpg",
+      "relPath": "src/assets/images/amirkhon/products/product-pink-hoodie.jpg",
+      "sizeMB": "2.65",
+      "sizeBytes": 2779924,
+      "desc": "Catalog item: Pink oversized hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "cart",
+      "fileName": "cart-item-blue-flower-top.jpg",
+      "relPath": "src/assets/images/amirkhon/cart/cart-item-blue-flower-top.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Active cart item: Blue Flower Print Crop Top",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "cart",
+      "fileName": "cart-item-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/amirkhon/cart/cart-item-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Active cart item: Levender Hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "cart",
+      "fileName": "cart-item-black-tshirt.jpg",
+      "relPath": "src/assets/images/amirkhon/cart/cart-item-black-tshirt.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Active cart item: Black Printed T-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "cart",
+      "fileName": "cart-item-yellow-dress.jpg",
+      "relPath": "src/assets/images/amirkhon/cart/cart-item-yellow-dress.jpg",
+      "sizeMB": "6.81",
+      "sizeBytes": 7137360,
+      "desc": "Active cart item: Yellow Flower Print Dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "cart",
+      "fileName": "cart-item-checks-shirt.jpg",
+      "relPath": "src/assets/images/amirkhon/cart/cart-item-checks-shirt.jpg",
+      "sizeMB": "8.50",
+      "sizeBytes": 8915901,
+      "desc": "Active cart item: Plaid checks shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "checkout",
+      "fileName": "checkout-item-blue-top.jpg",
+      "relPath": "src/assets/images/amirkhon/checkout/checkout-item-blue-top.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Checkout summary item: Blue Flower Crop Top",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "checkout",
+      "fileName": "checkout-item-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/amirkhon/checkout/checkout-item-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Checkout summary item: Levender Hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "amirkhon",
+      "page": "checkout",
+      "fileName": "checkout-item-black-tee.jpg",
+      "relPath": "src/assets/images/amirkhon/checkout/checkout-item-black-tee.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Checkout summary item: Black T-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "1-sign-in-banner.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/1-sign-in-banner.jpg",
+      "sizeMB": "13.03",
+      "sizeBytes": 13664109,
+      "desc": "Sign In screen: 3 girls in denim against blue wall (4096x3072, 13 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "2-sign-up-banner.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/2-sign-up-banner.jpg",
+      "sizeMB": "9.84",
+      "sizeBytes": 10321840,
+      "desc": "Sign Up screen: Group with vintage TV boombox (2731x4096, 10 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "2-sign-up-banner-alt.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/2-sign-up-banner-alt.jpg",
+      "sizeMB": "11.92",
+      "sizeBytes": 12495632,
+      "desc": "Sign Up screen (Alternative full framing, 12 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "3-reset-password-banner.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/3-reset-password-banner.jpg",
+      "sizeMB": "7.11",
+      "sizeBytes": 7450822,
+      "desc": "Reset Password screen: 2 girls in floral skirts (4096x2731, 7.3 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "4-check-email-banner.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/4-check-email-banner.jpg",
+      "sizeMB": "11.03",
+      "sizeBytes": 11560780,
+      "desc": "Check Email screen: 2 girls hugging in yellow & olive (4096x2731, 11.3 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "5-verification-banner.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/5-verification-banner.jpg",
+      "sizeMB": "6.81",
+      "sizeBytes": 7137360,
+      "desc": "Verification screen: Blonde in yellow polka dress on purple wall (4096x2731, 7 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "auth",
+      "fileName": "6-create-password-banner.jpg",
+      "relPath": "src/assets/images/kibriyo/auth/6-create-password-banner.jpg",
+      "sizeMB": "9.25",
+      "sizeBytes": 9704107,
+      "desc": "Create New Password screen: 3 girls in colorful tops (2731x4096, 9.5 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "product-hero-raven-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/product-hero-raven-hoodie.jpg",
+      "sizeMB": "1.44",
+      "sizeBytes": 1506474,
+      "desc": "Main product photo: Raven Hoodie (Girl in oversized black hoodie, 4096x1690)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "gallery-thumb-1-brown-jacket.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/gallery-thumb-1-brown-jacket.jpg",
+      "sizeMB": "2.72",
+      "sizeBytes": 2856211,
+      "desc": "Product thumbnail 1: Brown outerwear jacket",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "gallery-thumb-2-raven-detail.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/gallery-thumb-2-raven-detail.jpg",
+      "sizeMB": "1.44",
+      "sizeBytes": 1506474,
+      "desc": "Product thumbnail 2: Raven Hoodie closeup",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "gallery-thumb-3-pink-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/gallery-thumb-3-pink-hoodie.jpg",
+      "sizeMB": "2.65",
+      "sizeBytes": 2779924,
+      "desc": "Product thumbnail 3: Pink hoodie model (2400x3200)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "similar-white-tee-sunglasses.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/similar-white-tee-sunglasses.jpg",
+      "sizeMB": "7.15",
+      "sizeBytes": 7501937,
+      "desc": "Similar Products: White t-shirt with yellow sunglasses (4096x3072, 7.3 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "similar-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/similar-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Similar Products: Levender Hoodie (4096x2731, 6.4 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "similar-checks-shirt.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/similar-checks-shirt.jpg",
+      "sizeMB": "8.50",
+      "sizeBytes": 8915901,
+      "desc": "Similar Products: Black & White Checks Shirt (3072x4096, 8.7 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "similar-blue-flower-top.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/similar-blue-flower-top.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Similar Products: Blue flower crop top (3167x4096, 15.6 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "similar-urban-jacket.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/similar-urban-jacket.jpg",
+      "sizeMB": "2.72",
+      "sizeBytes": 2856211,
+      "desc": "Similar Products: Urban outerwear jacket",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "product-detail",
+      "fileName": "similar-denim-shirt.jpg",
+      "relPath": "src/assets/images/kibriyo/product-detail/similar-denim-shirt.jpg",
+      "sizeMB": "1.28",
+      "sizeBytes": 1337349,
+      "desc": "Similar Products: Denim blue long-sleeve shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "wishlist",
+      "fileName": "wishlist-item-blue-flower-top.jpg",
+      "relPath": "src/assets/images/kibriyo/wishlist/wishlist-item-blue-flower-top.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Wishlist item: Blue Flower Print Crop Top (15.6 MB)",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "wishlist",
+      "fileName": "wishlist-item-yellow-dress.jpg",
+      "relPath": "src/assets/images/kibriyo/wishlist/wishlist-item-yellow-dress.jpg",
+      "sizeMB": "6.81",
+      "sizeBytes": 7137360,
+      "desc": "Wishlist item: Yellow Flower Print Dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "wishlist",
+      "fileName": "wishlist-item-white-tee.jpg",
+      "relPath": "src/assets/images/kibriyo/wishlist/wishlist-item-white-tee.jpg",
+      "sizeMB": "7.15",
+      "sizeBytes": 7501937,
+      "desc": "Wishlist item: White T-shirt with sunglasses",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "wishlist",
+      "fileName": "wishlist-item-black-tee.jpg",
+      "relPath": "src/assets/images/kibriyo/wishlist/wishlist-item-black-tee.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Wishlist item: Black Printed T-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "wishlist",
+      "fileName": "wishlist-item-pink-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/wishlist/wishlist-item-pink-hoodie.jpg",
+      "sizeMB": "2.65",
+      "sizeBytes": 2779924,
+      "desc": "Wishlist item: Pink Oversized Hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "my-orders",
+      "fileName": "order-black-printed-tee.jpg",
+      "relPath": "src/assets/images/kibriyo/my-orders/order-black-printed-tee.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Order item preview: Black Printed T-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "my-orders",
+      "fileName": "order-white-cots-dress.jpg",
+      "relPath": "src/assets/images/kibriyo/my-orders/order-white-cots-dress.jpg",
+      "sizeMB": "4.65",
+      "sizeBytes": 4875438,
+      "desc": "Order item preview: White Cots Dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "my-orders",
+      "fileName": "order-pink-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/my-orders/order-pink-hoodie.jpg",
+      "sizeMB": "2.65",
+      "sizeBytes": 2779924,
+      "desc": "Order item preview: Pink Oversized Hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "my-orders",
+      "fileName": "order-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/my-orders/order-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Order item preview: Lavender Hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "order-details",
+      "fileName": "order-detail-black-printed-tee.jpg",
+      "relPath": "src/assets/images/kibriyo/order-details/order-detail-black-printed-tee.jpg",
+      "sizeMB": "7.91",
+      "sizeBytes": 8294790,
+      "desc": "Order detail preview: Black Printed T-shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "order-details",
+      "fileName": "order-detail-white-cots-dress.jpg",
+      "relPath": "src/assets/images/kibriyo/order-details/order-detail-white-cots-dress.jpg",
+      "sizeMB": "4.65",
+      "sizeBytes": 4875438,
+      "desc": "Order detail preview: White Cots Dress",
+      "status": "COPIED"
+    },
+    {
+      "member": "kibriyo",
+      "page": "order-details",
+      "fileName": "order-detail-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/kibriyo/order-details/order-detail-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Order detail preview: Lavender Hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "error-404",
+      "fileName": "404-illustration.png",
+      "relPath": "src/assets/images/tolibov/error-404/404-illustration.png",
+      "sizeMB": "0.00",
+      "sizeBytes": 1966,
+      "desc": "404 Error page illustration (Girl with telescope on 404 numbers)",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "empty-cart",
+      "fileName": "empty-cart-illustration.png",
+      "relPath": "src/assets/images/tolibov/empty-cart/empty-cart-illustration.png",
+      "sizeMB": "0.00",
+      "sizeBytes": 2154,
+      "desc": "Empty Cart page illustration (Guy inspecting empty cardboard box)",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "empty-wishlist",
+      "fileName": "empty-wishlist-illustration.png",
+      "relPath": "src/assets/images/tolibov/empty-wishlist/empty-wishlist-illustration.png",
+      "sizeMB": "0.00",
+      "sizeBytes": 3647,
+      "desc": "Empty Wishlist page illustration (Pink heart empty state)",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "empty-wishlist",
+      "fileName": "rec-white-tee.jpg",
+      "relPath": "src/assets/images/tolibov/empty-wishlist/rec-white-tee.jpg",
+      "sizeMB": "7.15",
+      "sizeBytes": 7501937,
+      "desc": "Empty Wishlist recommendation: White t-shirt with sunglasses",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "empty-wishlist",
+      "fileName": "rec-lavender-hoodie.jpg",
+      "relPath": "src/assets/images/tolibov/empty-wishlist/rec-lavender-hoodie.jpg",
+      "sizeMB": "6.24",
+      "sizeBytes": 6544763,
+      "desc": "Empty Wishlist recommendation: Lavender hoodie",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "empty-wishlist",
+      "fileName": "rec-checks-shirt.jpg",
+      "relPath": "src/assets/images/tolibov/empty-wishlist/rec-checks-shirt.jpg",
+      "sizeMB": "8.50",
+      "sizeBytes": 8915901,
+      "desc": "Empty Wishlist recommendation: Plaid checks shirt",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "empty-wishlist",
+      "fileName": "rec-blue-flower-top.jpg",
+      "relPath": "src/assets/images/tolibov/empty-wishlist/rec-blue-flower-top.jpg",
+      "sizeMB": "15.26",
+      "sizeBytes": 15998732,
+      "desc": "Empty Wishlist recommendation: Blue flower crop top",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "confirmed-order",
+      "fileName": "order-confirmed-illustration.png",
+      "relPath": "src/assets/images/tolibov/confirmed-order/order-confirmed-illustration.png",
+      "sizeMB": "0.00",
+      "sizeBytes": 2119,
+      "desc": "Order Confirmed page illustration (Celebrating guy with smartphone & checkmark)",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "contact-details",
+      "fileName": "user-profile-avatar.png",
+      "relPath": "src/assets/images/tolibov/contact-details/user-profile-avatar.png",
+      "sizeMB": "0.34",
+      "sizeBytes": 359587,
+      "desc": "User profile avatar (512x512)",
+      "status": "COPIED"
+    },
+    {
+      "member": "tolibov",
+      "page": "add-address",
+      "fileName": "address-icon.png",
+      "relPath": "src/assets/images/tolibov/add-address/address-icon.png",
+      "sizeMB": "0.20",
+      "sizeBytes": 207309,
+      "desc": "Delivery address location emblem (512x512)",
+      "status": "COPIED"
+    }
+  ]
+}

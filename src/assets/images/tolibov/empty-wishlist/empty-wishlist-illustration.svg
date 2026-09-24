@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F472B6"/>
+      <stop offset="100%" stop-color="#DB2777"/>
+    </linearGradient>
+    <linearGradient id="wishBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDF2F8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="heartShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#EC4899" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Backdrop -->
+  <circle cx="200" cy="140" r="110" fill="url(#wishBg)"/>
+
+  <!-- Sparkles & Floating Hearts -->
+  <circle cx="100" cy="90" r="6" fill="#8A33FD" opacity="0.5"/>
+  <circle cx="295" cy="85" r="5" fill="#EC4899" opacity="0.6"/>
+  <circle cx="90" cy="190" r="4" fill="#F59E0B" opacity="0.5"/>
+
+  <!-- Little Mini Hearts -->
+  <path d="M120 120 C120 115 115 110 110 110 C105 110 102 113 100 116 C98 113 95 110 90 110 C85 110 80 115 80 120 C80 128 100 138 100 138 C100 138 120 128 120 120 Z" fill="#F472B6" opacity="0.5"/>
+  <path d="M310 140 C310 135 305 130 300 130 C295 130 292 133 290 136 C288 133 285 130 280 130 C275 130 270 135 270 140 C270 148 290 158 290 158 C290 158 310 148 310 140 Z" fill="#8A33FD" opacity="0.4"/>
+
+  <!-- Big Central Heart Shape with Cutout / Empty Look -->
+  <g filter="url(#heartShadow)" transform="translate(135, 65)">
+    <path d="M65 125 C65 125 5 80 5 40 C5 17 22 0 45 0 C56 0 63 6 65 10 C67 6 74 0 85 0 C108 0 125 17 125 40 C125 80 65 125 65 125 Z" fill="url(#heartGrad)"/>
+    <!-- Broken/Dashed Inner Heart -->
+    <path d="M65 108 C65 108 18 70 18 38 C18 24 28 14 42 14 C51 14 58 19 65 26 C72 19 79 14 88 14 C102 14 112 24 112 38 C112 70 65 108 65 108 Z" fill="#FFFFFF" opacity="0.95"/>
+    <!-- Search / Question mark inside -->
+    <circle cx="65" cy="52" r="14" fill="#FDF2F8" stroke="#DB2777" stroke-width="2.5"/>
+    <text x="65" y="58" font-family="'Montserrat', sans-serif" font-size="18" font-weight="900" fill="#DB2777" text-anchor="middle">?</text>
+  </g>
+
+  <!-- Caption Pill -->
+  <rect x="100" y="240" width="200" height="32" rx="16" fill="#F6F6F6" stroke="#E6E6E6" stroke-width="1.5"/>
+  <text x="200" y="261" font-family="'Montserrat', sans-serif" font-size="13" font-weight="700" fill="#3C4242" text-anchor="middle">Your Wishlist is Empty</text>
+</svg>

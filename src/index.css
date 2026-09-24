@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #8A33FD;
+    --primary-dark: #6610F2;
+    --primary-light: #F4ECFF;
+    --dark: #3C4242;
+    --dark-deep: #1A1A1A;
+    --gray-text: #807D7E;
+    --gray-light: #F6F6F6;
+    --gray-border: #BEBCBD;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+}

@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Euphoria Fashion • Team Guide • Дастурамал барои даста</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8A33FD;
+      --primary-dark: #6610F2;
+      --primary-light: #F4ECFF;
+      --dark: #3C4242;
+      --dark-deep: #1A1A1A;
+      --gray-text: #807D7E;
+      --gray-bg: #F6F6F6;
+      --border: #E6E6E6;
+      --card-bg: #FFFFFF;
+      --lead-color: #8A33FD;
+      --kibriyo-color: #EC4899;
+      --tolibov-color: #F59E0B;
+      --success: #10B981;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--gray-bg);
+      color: var(--dark);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+    .header-banner {
+      background: linear-gradient(135deg, #2A174E 0%, #170A2C 100%);
+      color: white;
+      padding: 42px 20px;
+      border-bottom: 5px solid var(--primary);
+    }
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .header-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .badge-tag {
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: inline-block;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 10px rgba(138, 51, 253, 0.4);
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+    }
+    .subhead {
+      color: #BEBCBD;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(138, 51, 253, 0.5);
+    }
+
+    /* Sections */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin-top: 30px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 12px;
+      color: var(--dark-deep);
+    }
+
+    /* Team Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--primary-light);
+      font-weight: 700;
+      color: var(--dark-deep);
+      font-size: 13px;
+    }
+    tr:hover td {
+      background: #FAFAFB;
+    }
+    .role-lead {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .tech-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #F3F4F6;
+      margin: 2px;
+    }
+    .tech-tailwind {
+      background: #EDE5FF;
+      color: #6610F2;
+    }
+    .tech-css {
+      background: #FEF3C7;
+      color: #B45309;
+    }
+    .tech-react {
+      background: #E0F2FE;
+      color: #0284C7;
+    }
+
+    /* Badges */
+    .badge-lead {
+      background: #EDE5FF;
+      color: #6610F2;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .badge-kibriyo {
+      background: #FCE7F3;
+      color: #BE185D;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+    .badge-tolibov {
+      background: #FEF3C7;
+      color: #B45309;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    /* Code Block & Commands */
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .command-box {
+      background: #1E1E24;
+      color: #F3F4F6;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 12px 0;
+      position: relative;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 13px;
+      margin-right: 10px;
+    }
+
+    /* Tree View */
+    .tree-box {
+      background: #111319;
+      color: #E2E8F0;
+      border-radius: 12px;
+      padding: 24px;
+      font-family: 'JetBrains Mono', 'Consolas', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      white-space: pre;
+      overflow-x: auto;
+      border: 1px solid #232733;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    }
+    .tree-box .folder { color: #38BDF8; font-weight: 700; }
+    .tree-box .lead { color: #C084FC; font-weight: 600; }
+    .tree-box .kibriyo { color: #F472B6; font-weight: 600; }
+    .tree-box .tolibov { color: #FBBF24; font-weight: 600; }
+    .tree-box .comment { color: #94A3B8; font-style: italic; }
+
+    /* Alert Boxes */
+    .alert-card {
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin: 16px 0;
+      border-left: 5px solid;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .alert-lead {
+      background: #F7F3FF;
+      border-color: var(--primary);
+    }
+    .alert-kibriyo {
+      background: #FDF2F8;
+      border-color: #EC4899;
+    }
+    .alert-tolibov {
+      background: #FFFBEB;
+      border-color: #F59E0B;
+    }
+
+    /* Visibility Toggle */
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <!-- Header Banner -->
+  <header class="header-banner">
+    <div class="container">
+      <div class="header-content">
+        <div>
+          <span class="badge-tag">Euphoria Fashion • Team Onboarding</span>
+          <h1 id="header-title">Руководство для команды разработки</h1>
+          <p class="subhead" id="header-sub">Архитектура, задачи, правила Git и структура проекта</p>
+        </div>
+
+        <!-- Language Selector -->
+        <div class="lang-switcher">
+          <button type="button" class="lang-btn active" onclick="switchLang('ru')">
+            🇷🇺 Русский
+          </button>
+          <button type="button" class="lang-btn" onclick="switchLang('tj')">
+            🇹🇯 Тоҷикӣ
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- =============================================================== -->
+    <!-- RUSSIAN CONTENT                                                 -->
+    <!-- =============================================================== -->
+    <div id="content-ru" class="lang-content active">
+
+      <!-- 1. Распределение задач -->
+      <section class="section-card">
+        <h2 class="section-title">👥 1. Распределение ролей и страниц в команде</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 16px;">
+          Проект <strong>Euphoria Fashion</strong> (20 экранов) распределен между 3 участниками согласно стеку и уровню сложности:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Участник</th>
+              <th>Роль</th>
+              <th>Стек</th>
+              <th>Закрепленные страницы</th>
+              <th>Файлы для работы</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Амирхон</strong><br>
+                <span class="badge-lead">Teamlead</span>
+              </td>
+              <td class="role-lead">Team Lead / Архитектор</td>
+              <td>
+                <span class="tech-pill tech-react">React</span>
+                <span class="tech-pill tech-tailwind">Tailwind CSS</span>
+              </td>
+              <td>
+                • <strong>Архитектура:</strong> роутинг, глобальный стейт (Cart, Wishlist, Auth)<br>
+                • <strong>Layout & UI Kit:</strong> Header, Footer, Button, Input, ProductCard<br>
+                • <strong>Home page</strong> (главный лендинг витрины)<br>
+                • <strong>Products List</strong> (каталог с фильтрами по цене/размеру/цвету)<br>
+                • <strong>Cart Page</strong> (активная корзина с калькулятором сумм)<br>
+                • <strong>Checkout</strong> (оформление заказа и выбор оплаты)
+              </td>
+              <td>
+                <code>src/components/layout/</code><br>
+                <code>src/components/ui/</code><br>
+                <code>src/context/</code><br>
+                <code>src/pages/home/</code><br>
+                <code>src/pages/products/</code><br>
+                <code>src/pages/cart/CartPage.jsx</code><br>
+                <code>src/pages/checkout/CheckoutPage.jsx</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Кибриё</strong><br>
+                <span class="badge-kibriyo">Frontend Dev</span>
+              </td>
+              <td>Frontend Developer</td>
+              <td>
+                <span class="tech-pill tech-react">React</span>
+                <span class="tech-pill tech-tailwind">Tailwind CSS</span>
+              </td>
+              <td>
+                • <strong>Auth Flow (6 экранов):</strong> Sign In, Sign Up, Reset Password, Check Email, Verification, Create New Password<br>
+                • <strong>Product Detail Page:</strong> карточка товара, фотогалерея, выбор цвета/размера, табы описания<br>
+                • <strong>Wishlist:</strong> список избранных товаров с переносом в корзину<br>
+                • <strong>My Order:</strong> история заказов с вкладками статусов<br>
+                • <strong>Order Details:</strong> трекер доставки и состав заказа
+              </td>
+              <td>
+                <code>src/pages/auth/</code><br>
+                <code>src/pages/product-detail/</code><br>
+                <code>src/pages/wishlist/WishlistPage.jsx</code><br>
+                <code>src/pages/account/MyOrdersPage.jsx</code><br>
+                <code>src/pages/account/OrderDetailsPage.jsx</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Толибов</strong><br>
+                <span class="badge-tolibov">Frontend Dev</span>
+              </td>
+              <td>Frontend Developer</td>
+              <td>
+                <span class="tech-pill tech-react">React</span>
+                <span class="tech-pill tech-css">Modular CSS (*.module.css)</span>
+              </td>
+              <td>
+                • <strong>Самое легкое (6 экранов без сложной логики):</strong><br>
+                • <strong>Error Page (404)</strong> — статичная страница ошибки 404<br>
+                • <strong>Empty Cart</strong> — заглушка пустой корзины с кнопкой в каталог<br>
+                • <strong>Empty Wishlist</strong> — заглушка пустого вишлиста<br>
+                • <strong>Confirmed Order</strong> — поздравление с заказом и номер чека<br>
+                • <strong>Contact Details (My Info)</strong> — форма данных профиля в ЛК<br>
+                • <strong>Add Address</strong> — форма добавления адреса доставки
+              </td>
+              <td>
+                <code>src/pages/error/ErrorPage.jsx</code><br>
+                <code>src/pages/error/ErrorPage.module.css</code><br>
+                <code>src/pages/cart/EmptyCart.jsx</code><br>
+                <code>src/pages/cart/EmptyCart.module.css</code><br>
+                <code>src/pages/wishlist/EmptyWishlist.jsx</code><br>
+                <code>src/pages/wishlist/EmptyWishlist.module.css</code><br>
+                <code>src/pages/checkout/ConfirmedOrder.jsx</code><br>
+                <code>src/pages/checkout/ConfirmedOrder.module.css</code><br>
+                <code>src/pages/account/ContactDetailsPage.jsx</code><br>
+                <code>src/pages/account/ContactDetails.module.css</code><br>
+                <code>src/pages/account/AddAddressPage.jsx</code><br>
+                <code>src/pages/account/AddAddress.module.css</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 2. Git Workflow -->
+      <section class="section-card">
+        <h2 class="section-title">🌿 2. Пошаговая инструкция по работе с Git и GitHub</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 20px;">
+          Все работают через персональные ветки! <strong>Никто не делает прямой <code>push</code> в ветку <code>main</code></strong>. Все изменения принимаются через Pull Request.
+        </p>
+
+        <!-- Шаг 1 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">1</span> Клонирование репозитория на свой компьютер</h3>
+          <p style="font-size: 13px; color: #6B7280; margin: 4px 0 8px;">Откройте терминал (Git Bash / VS Code) и выполните:</p>
+          <div class="command-box">
+            <code>git clone https://github.com/cozy-bit/euphoria-fashion.git
+cd euphoria-fashion</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">2</span> Установка зависимостей проекта</h3>
+          <div class="command-box">
+            <code>npm install</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">3</span> Создание своей ветки (Branch)</h3>
+          <p style="font-size: 13px; color: #6B7280; margin: 4px 0 8px;">Создайте ветку под свой пул задач:</p>
+          <div class="command-box">
+            <code># Для Кибриё:
+git checkout -b feature/auth-and-orders
+
+# Для Толибова:
+git checkout -b feature/static-and-account</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+
+        <!-- Шаг 4 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">4</span> Запуск локального сервера разработки</h3>
+          <div class="command-box">
+            <code>npm run dev</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+          <p style="font-size: 13px; color: var(--primary); font-weight: 600; margin-top: 6px;">
+            Проект откроется в браузере по адресу: http://localhost:5173
+          </p>
+        </div>
+
+        <!-- Шаг 5 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">5</span> Сохранение работы (Commit)</h3>
+          <div class="command-box">
+            <code>git status
+git add .
+git commit -m "feat: complete empty cart and 404 pages"</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+
+        <!-- Шаг 6 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">6</span> Отправка своей ветки в GitHub (Push)</h3>
+          <div class="command-box">
+            <code>git push -u origin НАЗВАНИЕ_ВАШЕЙ_ВЕТКИ</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+
+        <!-- Шаг 7 -->
+        <div>
+          <h3><span class="step-badge">7</span> Создание Pull Request (PR)</h3>
+          <p style="font-size: 14px; color: var(--dark); margin-top: 8px;">
+            Перейдите на страницу репозитория в GitHub, нажмите зеленую кнопку <strong>"Compare & pull request"</strong>, напишите краткое описание сделанных страниц и отправьте запрос тимлиду (Амирхону) на проверку и слияние в <code>main</code>.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Иерархия проекта -->
+      <section class="section-card">
+        <h2 class="section-title">📁 3. Точная иерархия проекта и структура файлов</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 16px;">
+          Цветовая маркировка файлов: <span style="color: #C084FC; font-weight: 700;">● Амирхон</span> &nbsp;|&nbsp; <span style="color: #F472B6; font-weight: 700;">● Кибриё</span> &nbsp;|&nbsp; <span style="color: #FBBF24; font-weight: 700;">● Толибов</span>
+        </p>
+
+        <pre class="tree-box"><code><span class="folder">euphoria-fashion/</span>
+├── <span class="folder">public/</span>
+│   ├── <span class="lead">favicon.svg</span>                      <span class="comment"># Логотип и фавикон Euphoria</span>
+│   └── <span class="lead">team-guide.html</span>                  <span class="comment"># Этот интерактивный гайд для команды</span>
+├── <span class="folder">src/</span>
+│   ├── <span class="folder">assets/</span>
+│   │   ├── <span class="folder">images/</span>                          <span class="comment"># ВСЕ 100% ОРИГИНАЛЬНЫЕ ФОТО ИЗ FIGMA (535 MB)</span>
+│   │   │   ├── <span class="folder lead">amirkhon/</span>                    <span class="comment"># Папка Амирхона (58 файлов)</span>
+│   │   │   │   ├── <span class="lead">home/</span>                        <span class="comment"># Баннеры Hero, Saving Zone, бренды, отзывы (32 шт)</span>
+│   │   │   │   ├── <span class="lead">products/</span>                    <span class="comment"># Карточки каталога, мужское/женское (18 шт)</span>
+│   │   │   │   ├── <span class="lead">cart/</span>                        <span class="comment"># Товары в корзине (5 шт)</span>
+│   │   │   │   └── <span class="lead">checkout/</span>                    <span class="comment"># Превью товаров в чекауте (3 шт)</span>
+│   │   │   ├── <span class="folder kibriyo">kibriyo/</span>                     <span class="comment"># Папка Кибриё (29 файлов)</span>
+│   │   │   │   ├── <span class="kibriyo">auth/</span>                        <span class="comment"># 6 студийных фото 4K для экранов авторизации</span>
+│   │   │   │   ├── <span class="kibriyo">product-detail/</span>              <span class="comment"># Raven Hoodie hero, галерея, Similar Products</span>
+│   │   │   │   ├── <span class="kibriyo">wishlist/</span>                    <span class="comment"># Фото товаров для списка желаний (5 шт)</span>
+│   │   │   │   ├── <span class="kibriyo">my-orders/</span>                   <span class="comment"># Превью товаров в истории заказов (4 шт)</span>
+│   │   │   │   └── <span class="kibriyo">order-details/</span>               <span class="comment"># Фото позиций в трекере доставки (3 шт)</span>
+│   │   │   └── <span class="folder tolibov">tolibov/</span>                     <span class="comment"># Папка Толибова (14 файлов)</span>
+│   │   │       ├── <span class="tolibov">error-404/</span>                   <span class="comment"># Иллюстрация 404 (SVG вектор + PNG)</span>
+│   │   │       ├── <span class="tolibov">empty-cart/</span>                  <span class="comment"># Иллюстрация пустой корзины (SVG + PNG)</span>
+│   │   │       ├── <span class="tolibov">empty-wishlist/</span>              <span class="comment"># Иллюстрация пустой вишлист + 4 товара</span>
+│   │   │       ├── <span class="tolibov">confirmed-order/</span>             <span class="comment"># Иллюстрация успешного заказа (SVG + PNG)</span>
+│   │   │       ├── <span class="tolibov">contact-details/</span>             <span class="comment"># user-profile-avatar.png (512x512)</span>
+│   │   │       └── <span class="tolibov">add-address/</span>                 <span class="comment"># address-icon.png</span>
+│   ├── <span class="folder lead">components/</span>
+│   │   ├── <span class="folder lead">layout/</span>
+│   │   │   ├── <span class="lead">Header.jsx</span>                   <span class="comment"># Главное меню (Shop, Women, Men, Search, Wishlist/Cart badges)</span>
+│   │   │   ├── <span class="lead">Footer.jsx</span>                   <span class="comment"># Подвал сайта Euphoria (ссылки, соцсети, копирайт)</span>
+│   │   │   └── <span class="lead">Layout.jsx</span>                   <span class="comment"># Базовая обертка сайта</span>
+│   │   └── <span class="folder lead">ui/</span>                          <span class="comment"># Переиспользуемый UI Kit (используйте в своих страницах!)</span>
+│   │       ├── <span class="lead">Button.jsx</span>                   <span class="comment"># Кнопка Euphoria (primary, outline, dark)</span>
+│   │       ├── <span class="lead">Input.jsx</span>                    <span class="comment"># Текстовое поле ввода</span>
+│   │       ├── <span class="lead">ProductCard.jsx</span>              <span class="comment"># Карточка товара с ценой, брендом и лайком</span>
+│   │       ├── <span class="lead">Modal.jsx</span>                    <span class="comment"># Всплывающее окно</span>
+│   │       ├── <span class="lead">Breadcrumbs.jsx</span>              <span class="comment"># Хлебные крошки навигации</span>
+│   │       └── <span class="lead">Tabs.jsx</span>                     <span class="comment"># Переключатель вкладок</span>
+│   ├── <span class="folder lead">context/</span>                         <span class="comment"># Глобальные контексты состояния</span>
+│   │   ├── <span class="lead">CartContext.jsx</span>                  <span class="comment"># Управление корзиной (добавление, удаление, подсчет)</span>
+│   │   ├── <span class="lead">WishlistContext.jsx</span>              <span class="comment"># Список избранных товаров</span>
+│   │   └── <span class="lead">AuthContext.jsx</span>                  <span class="comment"># Состояние авторизации пользователя</span>
+│   ├── <span class="folder">pages/</span>
+│   │   ├── <span class="folder lead">home/</span>                            <span class="comment"># ЗОНА АМИРХОНА (React + Tailwind)</span>
+│   │   │   └── <span class="lead">HomePage.jsx</span>                  <span class="comment"># Главная витрина Euphoria</span>
+│   │   ├── <span class="folder lead">products/</span>                        <span class="comment"># ЗОНА АМИРХОНА (React + Tailwind)</span>
+│   │   │   └── <span class="lead">ProductsListPage.jsx</span>          <span class="comment"># Каталог товаров с аккордеонами фильтров</span>
+│   │   ├── <span class="folder kibriyo">product-detail/</span>                  <span class="comment"># ЗОНА КИБРИЁ (React + Tailwind)</span>
+│   │   │   └── <span class="kibriyo">ProductDetailPage.jsx</span>          <span class="comment"># Карточка товара, миниатюры, размеры, табы</span>
+│   │   ├── <span class="folder">cart/</span>                            <span class="comment"># ЗОНА АМИРХОНА + ТОЛИБОВА</span>
+│   │   │   ├── <span class="lead">CartPage.jsx</span>                 <span class="comment"># Активная корзина с расчетом и купонами (Амирхон)</span>
+│   │   │   ├── <span class="tolibov">EmptyCart.jsx</span>                <span class="comment"># Пустая корзина (Толибов)</span>
+│   │   │   └── <span class="tolibov">EmptyCart.module.css</span>         <span class="comment"># Модульный CSS файл Толибова</span>
+│   │   ├── <span class="folder">checkout/</span>                        <span class="comment"># ЗОНА АМИРХОНА + ТОЛИБОВА</span>
+│   │   │   ├── <span class="lead">CheckoutPage.jsx</span>             <span class="comment"># Форма чекаута и выбор оплаты (Амирхон)</span>
+│   │   │   ├── <span class="tolibov">ConfirmedOrder.jsx</span>           <span class="comment"># Экран успешного заказа (Толибов)</span>
+│   │   │   └── <span class="tolibov">ConfirmedOrder.module.css</span>    <span class="comment"># Модульный CSS файл Толибова</span>
+│   │   ├── <span class="folder kibriyo">auth/</span>                            <span class="comment"># ЗОНА КИБРИЁ (React + Tailwind)</span>
+│   │   │   ├── <span class="kibriyo">AuthLayout.jsx</span>               <span class="comment"># Единый шаблон: фото слева + контент справа</span>
+│   │   │   ├── <span class="kibriyo">SignInPage.jsx</span>               <span class="comment"># Вход</span>
+│   │   │   ├── <span class="kibriyo">SignUpPage.jsx</span>               <span class="comment"># Регистрация</span>
+│   │   │   ├── <span class="kibriyo">ResetPasswordPage.jsx</span>        <span class="comment"># Сброс пароля</span>
+│   │   │   ├── <span class="kibriyo">CheckEmailPage.jsx</span>           <span class="comment"># Экран «Проверьте почту»</span>
+│   │   │   ├── <span class="kibriyo">VerificationPage.jsx</span>         <span class="comment"># Ввод 4-значного OTP кода</span>
+│   │   │   └── <span class="kibriyo">CreateNewPasswordPage.jsx</span>    <span class="comment"># Создание нового пароля</span>
+│   │   ├── <span class="folder">wishlist/</span>                        <span class="comment"># ЗОНА КИБРИЁ + ТОЛИБОВА</span>
+│   │   │   ├── <span class="kibriyo">WishlistPage.jsx</span>             <span class="comment"># Список избранного с товарами (Кибриё)</span>
+│   │   │   ├── <span class="tolibov">EmptyWishlist.jsx</span>            <span class="comment"># Пустой вишлист (Толибов)</span>
+│   │   │   └── <span class="tolibov">EmptyWishlist.module.css</span>     <span class="comment"># Модульный CSS файл Толибова</span>
+│   │   ├── <span class="folder">account/</span>                         <span class="comment"># ЗОНА КИБРИЁ + ТОЛИБОВА</span>
+│   │   │   ├── <span class="kibriyo">MyOrdersPage.jsx</span>             <span class="comment"># История заказов и табы (Кибриё)</span>
+│   │   │   ├── <span class="kibriyo">OrderDetailsPage.jsx</span>         <span class="comment"># Детали заказа и статус-трекер (Кибриё)</span>
+│   │   │   ├── <span class="tolibov">ContactDetailsPage.jsx</span>       <span class="comment"># Личные данные профиля (Толибов)</span>
+│   │   │   ├── <span class="tolibov">ContactDetails.module.css</span>   <span class="comment"># Модульный CSS файл Толибова</span>
+│   │   │   ├── <span class="tolibov">AddAddressPage.jsx</span>           <span class="comment"># Добавление адреса доставки (Толибов)</span>
+│   │   │   └── <span class="tolibov">AddAddress.module.css</span>       <span class="comment"># Модульный CSS файл Толибова</span>
+│   │   └── <span class="folder tolibov">error/</span>                           <span class="comment"># ЗОНА ТОЛИБОВА (React + Modular CSS)</span>
+│   │       ├── <span class="tolibov">ErrorPage.jsx</span>                <span class="comment"># Страница 404 ошибки</span>
+│   │       └── <span class="tolibov">ErrorPage.module.css</span>         <span class="comment"># Модульный CSS файл Толибова</span>
+│   ├── <span class="lead">App.jsx</span>                              <span class="comment"># Роутер всех страниц (react-router-dom)</span>
+│   ├── <span class="lead">index.css</span>                            <span class="comment"># Глобальные стили Tailwind CSS</span>
+│   └── <span class="lead">main.jsx</span>                             <span class="comment"># Точка входа React</span></code></pre>
+      </section>
+
+      
+      <!-- 4. Расположение и импорт оригинальных фотографий -->
+      <section class="section-card">
+        <h2 class="section-title">🖼️ 4. Где лежат фотографии и как их использовать в коде</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 20px;">
+          Все фотографии скачаны напрямую из Figma CDN <strong>в 100% оригинальном студийном качестве</strong> (разрешения до <code>4096×3072</code>, до 15 МБ без сжатия) и уже разложены по персональным папкам в <code>src/assets/images/</code>:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div style="background: #F7F3FF; border: 1px solid #8A33FD; border-radius: 12px; padding: 16px;">
+            <h4 style="color: #6610F2; font-weight: 800; font-size: 15px; margin-bottom: 8px;">📁 Амирхон (<code>src/assets/images/amirkhon/</code>)</h4>
+            <ul style="font-size: 12px; color: #3C4242; line-height: 1.8; list-style: square; padding-left: 18px;">
+              <li><code>home/</code> — баннеры Hero, Saving Zone, бренды Nike/Puma, отзывы (32 файла, 122 MB)</li>
+              <li><code>products/</code> — одежда каталога: ракурсы футболок, поло, худи, платья (18 файлов, 102 MB)</li>
+              <li><code>cart/</code> — товары в корзине: синий топ, лавандовый худи, клетка (5 файлов, 45 MB)</li>
+              <li><code>checkout/</code> — превью чекаута (3 файла, 29 MB)</li>
+            </ul>
+          </div>
+
+          <div style="background: #FDF2F8; border: 1px solid #EC4899; border-radius: 12px; padding: 16px;">
+            <h4 style="color: #BE185D; font-weight: 800; font-size: 15px; margin-bottom: 8px;">📁 Кибриё (<code>src/assets/images/kibriyo/</code>)</h4>
+            <ul style="font-size: 12px; color: #3C4242; line-height: 1.8; list-style: square; padding-left: 18px;">
+              <li><code>auth/</code> — 6 оригинальных 4K студийных фото для экранов входа, сброса и OTP (69 MB)</li>
+              <li><code>product-detail/</code> — Raven Hoodie hero, миниатюры галереи, Similar Products (49 MB)</li>
+              <li><code>wishlist/</code> — товары вишлиста: синий топ, желтое платье, худи (40 MB)</li>
+              <li><code>my-orders/</code> & <code>order-details/</code> — позиции заказов (40 MB)</li>
+            </ul>
+          </div>
+
+          <div style="background: #FFFBEB; border: 1px solid #F59E0B; border-radius: 12px; padding: 16px;">
+            <h4 style="color: #B45309; font-weight: 800; font-size: 15px; margin-bottom: 8px;">📁 Толибов (<code>src/assets/images/tolibov/</code>)</h4>
+            <ul style="font-size: 12px; color: #3C4242; line-height: 1.8; list-style: square; padding-left: 18px;">
+              <li><code>error-404/</code> — <code>404-illustration.svg</code> и <code>.png</code></li>
+              <li><code>empty-cart/</code> — <code>empty-cart-illustration.svg</code> и <code>.png</code></li>
+              <li><code>empty-wishlist/</code> — <code>empty-wishlist-illustration.svg</code> + 4 товара</li>
+              <li><code>confirmed-order/</code> — <code>order-confirmed-illustration.svg</code> и <code>.png</code></li>
+              <li><code>contact-details/</code> — <code>user-profile-avatar.png</code></li>
+              <li><code>add-address/</code> — <code>address-icon.png</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">💻 Примеры импорта в коде компонентов:</h3>
+
+        <div style="margin-bottom: 16px;">
+          <p style="font-size: 12px; font-weight: 700; color: #EC4899; margin-bottom: 4px;">Для Кибриё (React + Tailwind):</p>
+          <div class="command-box">
+            <code>import signInBanner from '../../assets/images/kibriyo/auth/1-sign-in-banner.jpg';
+
+export default function SignInPage() {
+  return (
+    &lt;div className="flex min-h-screen"&gt;
+      &lt;div className="w-1/2 hidden lg:block"&gt;
+        &lt;img src={signInBanner} alt="Euphoria" className="w-full h-full object-cover" /&gt;
+      &lt;/div&gt;
+      {/* форма справа */}
+    &lt;/div&gt;
+  );
+}</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size: 12px; font-weight: 700; color: #F59E0B; margin-bottom: 4px;">Для Толибова (React + Modular CSS):</p>
+          <div class="command-box">
+            <code>import illustration from '../../assets/images/tolibov/empty-cart/empty-cart-illustration.svg';
+import styles from './EmptyCart.module.css';
+
+export default function EmptyCart() {
+  return (
+    &lt;div className={styles.container}&gt;
+      &lt;img src={illustration} alt="Empty Cart" className={styles.image} /&gt;
+      &lt;h2 className={styles.title}&gt;Your Cart is Empty and Sad :(&lt;/h2&gt;
+      &lt;button className={styles.button}&gt;Explore Products&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code>
+            <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Персональные советы -->
+      <section class="section-card">
+        <h2 class="section-title">💡 5. Инструкции и советы разработчикам</h2>
+
+        <div class="alert-card alert-lead">
+          <strong style="color: var(--primary);">📌 Памятка для Амирхона (Тимлид):</strong><br>
+          • Начни с базового скелета: <code>App.jsx</code> (роутер), <code>Header.jsx</code>, <code>Footer.jsx</code> и контекстов <code>CartContext</code>, <code>WishlistContext</code>.<br>
+          • Подготовь переиспользуемый <code>ProductCard.jsx</code> — он понадобится и тебе в каталоге, и Кибриё в карточке товара и вишлисте.<br>
+          • Проверяй Pull Request от команды и сливай их в ветку <code>main</code>.
+        </div>
+
+        <div class="alert-card alert-kibriyo">
+          <strong style="color: #BE185D;">📌 Инструкция для Кибриё:</strong><br>
+          • Ты работаешь с <strong>React + Tailwind CSS</strong>.<br>
+          • Для блока авторизации сделай единый компонент-обертку <code>AuthLayout.jsx</code> (слева картинка, справа форма), чтобы не дублировать верстку на 6 страницах.<br>
+          • Твои страницы: <code>src/pages/auth/</code>, <code>ProductDetailPage.jsx</code>, <code>WishlistPage.jsx</code>, <code>MyOrdersPage.jsx</code>, <code>OrderDetailsPage.jsx</code>.<br>
+          • Используй готовые UI-компоненты: <code>import Button from '../../components/ui/Button'</code>, <code>ProductCard</code>.
+        </div>
+
+        <div class="alert-card alert-tolibov">
+          <strong style="color: #B45309;">📌 Инструкция для Толибова:</strong><br>
+          • Ты работаешь с <strong>React + Чистый модульный CSS</strong> (без Tailwind).<br>
+          • Твои страницы самые легкие и изолированные: <code>ErrorPage</code>, <code>EmptyCart</code>, <code>EmptyWishlist</code>, <code>ConfirmedOrder</code>, <code>ContactDetailsPage</code>, <code>AddAddressPage</code>.<br>
+          • Для каждого компонента создавай свой файл стилей: например, рядом с <code>EmptyCart.jsx</code> создай <code>EmptyCart.module.css</code>.<br>
+          • В коде JSX подключай стили так: <code>import styles from './EmptyCart.module.css'</code> и пиши <code>&lt;div className={styles.container}&gt;</code>.<br>
+          • Твои стили полностью изолированы благодаря CSS Modules — ты можешь писать любые свойства в CSS и быть на 100% уверен, что ничего не сломаешь на других страницах!
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- TAJIK CONTENT (ТОҶИКӢ)                                          -->
+    <!-- =============================================================== -->
+    <div id="content-tj" class="lang-content">
+
+      <!-- 1. Тақсимоти нақшҳо -->
+      <section class="section-card">
+        <h2 class="section-title">👥 1. Тақсимоти вазифаҳо ва саҳифаҳо дар даста</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 16px;">
+          Лоиҳаи <strong>Euphoria Fashion</strong> (20 саҳифа) байни 3 нафар аз рӯи малака ва таҷриба чунин тақсим шудааст:
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Аъзои даста</th>
+              <th>Нақш</th>
+              <th>Стек</th>
+              <th>Саҳифаҳои вобасташуда</th>
+              <th>Файлҳо барои кор</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Амирхон</strong><br>
+                <span class="badge-lead">Teamlead</span>
+              </td>
+              <td class="role-lead">Team Lead / Архитектор</td>
+              <td>
+                <span class="tech-pill tech-react">React</span>
+                <span class="tech-pill tech-tailwind">Tailwind CSS</span>
+              </td>
+              <td>
+                • <strong>Архитектура:</strong> роутинг, ҳолатҳои умумӣ (Cart, Wishlist, Auth)<br>
+                • <strong>Layout ва UI Kit:</strong> Header, Footer, Button, Input, ProductCard<br>
+                • <strong>Home page</strong> (саҳифаи асосии мағоза)<br>
+                • <strong>Products List</strong> (каталоги либос бо филтрҳои нарх, ранг ва андоза)<br>
+                • <strong>Cart Page</strong> (сабади харид бо ҳисобкунии маблағ ва промокодҳо)<br>
+                • <strong>Checkout</strong> (расмикунонии фармоиш ва интихоби пардохт)
+              </td>
+              <td>
+                <code>src/components/layout/</code><br>
+                <code>src/components/ui/</code><br>
+                <code>src/context/</code><br>
+                <code>src/pages/home/</code><br>
+                <code>src/pages/products/</code><br>
+                <code>src/pages/cart/CartPage.jsx</code><br>
+                <code>src/pages/checkout/CheckoutPage.jsx</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Кибриё</strong><br>
+                <span class="badge-kibriyo">Frontend Dev</span>
+              </td>
+              <td>Frontend Developer</td>
+              <td>
+                <span class="tech-pill tech-react">React</span>
+                <span class="tech-pill tech-tailwind">Tailwind CSS</span>
+              </td>
+              <td>
+                • <strong>Қисми Auth (6 саҳифа):</strong> Sign In, Sign Up, Reset Password, Check Email, Verification, Create New Password<br>
+                • <strong>Product Detail Page:</strong> саҳифаи муфассали маҳсулот, галерея, интихоби ранг ва андоза, шарҳҳо<br>
+                • <strong>Wishlist:</strong> рӯйхати дӯстдоштаҳо бо гузаронидан ба сабад<br>
+                • <strong>My Order:</strong> таърихи фармоишҳо бо табҳои ҳолатҳо<br>
+                • <strong>Order Details:</strong> пайгирии раванди расонидани бор ва таркиби фармоиш
+              </td>
+              <td>
+                <code>src/pages/auth/</code><br>
+                <code>src/pages/product-detail/</code><br>
+                <code>src/pages/wishlist/WishlistPage.jsx</code><br>
+                <code>src/pages/account/MyOrdersPage.jsx</code><br>
+                <code>src/pages/account/OrderDetailsPage.jsx</code>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Толибов</strong><br>
+                <span class="badge-tolibov">Frontend Dev</span>
+              </td>
+              <td>Frontend Developer</td>
+              <td>
+                <span class="tech-pill tech-react">React</span>
+                <span class="tech-pill tech-css">Modular CSS (*.module.css)</span>
+              </td>
+              <td>
+                • <strong>Саҳифаҳои осонтарин (6 саҳифа бе мантиқи мураккаб):</strong><br>
+                • <strong>Error Page (404)</strong> — саҳифаи хатогии 404 бо тугмаи бозгашт<br>
+                • <strong>Empty Cart</strong> — саҳифаи сабади холӣ бо тугмаи гузариш ба каталог<br>
+                • <strong>Empty Wishlist</strong> — саҳифаи рӯйхати дӯстдоштаи холӣ<br>
+                • <strong>Confirmed Order</strong> — табрикоти фармоиши бомуваффақият<br>
+                • <strong>Contact Details (My Info)</strong> — формаи тағйири маълумоти корбар<br>
+                • <strong>Add Address</strong> — формаи илова кардани суроғаи расонидан
+              </td>
+              <td>
+                <code>src/pages/error/ErrorPage.jsx</code><br>
+                <code>src/pages/error/ErrorPage.module.css</code><br>
+                <code>src/pages/cart/EmptyCart.jsx</code><br>
+                <code>src/pages/cart/EmptyCart.module.css</code><br>
+                <code>src/pages/wishlist/EmptyWishlist.jsx</code><br>
+                <code>src/pages/wishlist/EmptyWishlist.module.css</code><br>
+                <code>src/pages/checkout/ConfirmedOrder.jsx</code><br>
+                <code>src/pages/checkout/ConfirmedOrder.module.css</code><br>
+                <code>src/pages/account/ContactDetailsPage.jsx</code><br>
+                <code>src/pages/account/ContactDetails.module.css</code><br>
+                <code>src/pages/account/AddAddressPage.jsx</code><br>
+                <code>src/pages/account/AddAddress.module.css</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 2. Дастурамали Git -->
+      <section class="section-card">
+        <h2 class="section-title">🌿 2. Дастури қадам ба қадам оид ба Git ва GitHub</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 20px;">
+          Ҳар як нафар дар шохаи (branch) шахсии худ кор мекунад. <strong>Ҳеҷ кас мустақиман ба шохаи <code>main</code> файл намефиристад!</strong>
+        </p>
+
+        <!-- Қадами 1 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">1</span> Клон кардани лоиҳа ба компютер</h3>
+          <p style="font-size: 13px; color: #6B7280; margin: 4px 0 8px;">Терминалро (Git Bash ё VS Code) кушоед ва фармонро иҷро намоед:</p>
+          <div class="command-box">
+            <code>git clone https://github.com/cozy-bit/euphoria-fashion.git
+cd euphoria-fashion</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+
+        <!-- Қадами 2 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">2</span> Насб кардани китобхонаҳо (Dependencies)</h3>
+          <div class="command-box">
+            <code>npm install</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+
+        <!-- Қадами 3 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">3</span> Сохтани шохаи нав (Branch)</h3>
+          <p style="font-size: 13px; color: #6B7280; margin: 4px 0 8px;">Ҳар як шахс шохаи худро месозад:</p>
+          <div class="command-box">
+            <code># Барои Кибриё:
+git checkout -b feature/auth-and-orders
+
+# Барои Толибов:
+git checkout -b feature/static-and-account</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+
+        <!-- Қадами 4 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">4</span> Оғоз кардани лоиҳа (Local Server)</h3>
+          <div class="command-box">
+            <code>npm run dev</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+          <p style="font-size: 13px; color: var(--primary); font-weight: 600; margin-top: 6px;">
+            Дар браузер кушоед: http://localhost:5173
+          </p>
+        </div>
+
+        <!-- Қадами 5 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">5</span> Сабти тағйиротҳо (Commit)</h3>
+          <div class="command-box">
+            <code>git status
+git add .
+git commit -m "feat: complete empty cart and 404 pages"</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+
+        <!-- Қадами 6 -->
+        <div style="margin-bottom: 24px;">
+          <h3><span class="step-badge">6</span> Фиристодани шоха ба GitHub (Push)</h3>
+          <div class="command-box">
+            <code>git push -u origin НОМИ_ШОХАИ_ШУМО</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+
+        <!-- Қадами 7 -->
+        <div>
+          <h3><span class="step-badge">7</span> Кушодани Pull Request (PR)</h3>
+          <p style="font-size: 14px; color: var(--dark); margin-top: 8px;">
+            Ба саҳифаи лоиҳа дар GitHub гузаред, тугмаи сабзи <strong>"Compare & pull request"</strong>-ро пахш кунед, шарҳи кӯтоҳ нависед ва ба тимлид (Амирхон) барои тафтиш ва ҳамроҳкунӣ ба <code>main</code> фиристед.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Сохтори лоиҳа -->
+      <section class="section-card">
+        <h2 class="section-title">📁 3. Сохтори дақиқи файлҳо ва ҷузвдонҳо</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 16px;">
+          Рангҳои нишондиҳанда: <span style="color: #C084FC; font-weight: 700;">● Амирхон</span> &nbsp;|&nbsp; <span style="color: #F472B6; font-weight: 700;">● Кибриё</span> &nbsp;|&nbsp; <span style="color: #FBBF24; font-weight: 700;">● Толибов</span>
+        </p>
+
+        <pre class="tree-box"><code><span class="folder">euphoria-fashion/</span>
+├── <span class="folder">public/</span>
+│   ├── <span class="lead">favicon.svg</span>                      <span class="comment"># Нишони мағоза (Euphoria)</span>
+│   └── <span class="lead">team-guide.html</span>                  <span class="comment"># Ҳамин дастурамал барои даста</span>
+├── <span class="folder">src/</span>
+│   ├── <span class="folder">assets/</span>
+│   │   ├── <span class="folder">images/</span>
+│   │   │   ├── <span class="folder lead">home/</span>                        <span class="comment"># Аксҳои баннери асосӣ, бахшҳои тахфиф ва шарҳҳо</span>
+│   │   │   ├── <span class="folder lead">products/</span>                    <span class="comment"># Аксҳои либосҳо ва каталог</span>
+│   │   │   ├── <span class="folder kibriyo">auth/</span>                        <span class="comment"># Аксҳо барои саҳифаҳои воридшавӣ ва сабти ном</span>
+│   │   │   └── <span class="folder tolibov">states/</span>                      <span class="comment"># Тасвирҳои 404, сабади холӣ ва фармоиш</span>
+│   │   └── <span class="folder">icons/</span>                           <span class="comment"># Нишонаҳои SVG барои сабад ва дилча</span>
+│   ├── <span class="folder lead">components/</span>
+│   │   ├── <span class="folder lead">layout/</span>
+│   │   │   ├── <span class="lead">Header.jsx</span>                   <span class="comment"># Менюи асосӣ (Shop, Women, Men, Search, сабад)</span>
+│   │   │   ├── <span class="lead">Footer.jsx</span>                   <span class="comment"># Поёни сайт (маълумот, шабакаҳо, ҳуқуқҳо)</span>
+│   │   │   └── <span class="lead">Layout.jsx</span>                   <span class="comment"># Қолаби умумии саҳифаҳо</span>
+│   │   └── <span class="folder lead">ui/</span>                          <span class="comment"># Элементҳои умумии UI (барои ҳама дастрас)</span>
+│   │       ├── <span class="lead">Button.jsx</span>                   <span class="comment"># Тугмаи тайёр (primary, outline, dark)</span>
+│   │       ├── <span class="lead">Input.jsx</span>                    <span class="comment"># Майдони воридкунии матн</span>
+│   │       ├── <span class="lead">ProductCard.jsx</span>              <span class="comment"># Корти либос бо нарх, бренд ва тугмаи сабт</span>
+│   │       ├── <span class="lead">Modal.jsx</span>                    <span class="comment"># Равзанаи кушодашаванда</span>
+│   │       ├── <span class="lead">Breadcrumbs.jsx</span>              <span class="comment"># Роҳнамои навигатсия</span>
+│   │       └── <span class="lead">Tabs.jsx</span>                     <span class="comment"># Интихоби табҳо</span>
+│   ├── <span class="folder lead">context/</span>                         <span class="comment"># Ҳолатҳои умумӣ (Global Context)</span>
+│   │   ├── <span class="lead">CartContext.jsx</span>                  <span class="comment"># Идораи сабад (илова кардан, ҳисоб кардан)</span>
+│   │   ├── <span class="lead">WishlistContext.jsx</span>              <span class="comment"># Идораи маҳсулоти дӯстдошта</span>
+│   │   └── <span class="lead">AuthContext.jsx</span>                  <span class="comment"># Ҳолати корбари воридшуда</span>
+│   ├── <span class="folder">pages/</span>
+│   │   ├── <span class="folder lead">home/</span>                            <span class="comment"># ҲУДУДИ АМИРХОН (React + Tailwind)</span>
+│   │   │   └── <span class="lead">HomePage.jsx</span>                  <span class="comment"># Саҳифаи асосии Euphoria</span>
+│   │   ├── <span class="folder lead">products/</span>                        <span class="comment"># ҲУДУДИ АМИРХОН (React + Tailwind)</span>
+│   │   │   └── <span class="lead">ProductsListPage.jsx</span>          <span class="comment"># Каталоги либосҳо бо филтрҳо</span>
+│   │   ├── <span class="folder kibriyo">product-detail/</span>                  <span class="comment"># ҲУДУДИ КИБРИЁ (React + Tailwind)</span>
+│   │   │   └── <span class="kibriyo">ProductDetailPage.jsx</span>          <span class="comment"># Саҳифаи маҳсулот, андозаҳо, рангҳо, шарҳҳо</span>
+│   │   ├── <span class="folder">cart/</span>                            <span class="comment"># ҲУДУДИ АМИРХОН + ТОЛИБОВ</span>
+│   │   │   ├── <span class="lead">CartPage.jsx</span>                 <span class="comment"># Сабади фаъол бо ҳисобкунӣ (Амирхон)</span>
+│   │   │   ├── <span class="tolibov">EmptyCart.jsx</span>                <span class="comment"># Сабади холӣ (Толибов)</span>
+│   │   │   └── <span class="tolibov">EmptyCart.module.css</span>         <span class="comment"># Модули CSS-и Толибов</span>
+│   │   ├── <span class="folder">checkout/</span>                        <span class="comment"># ҲУДУДИ АМИРХОН + ТОЛИБОВ</span>
+│   │   │   ├── <span class="lead">CheckoutPage.jsx</span>             <span class="comment"># Формаи пардохт ва суроға (Амирхон)</span>
+│   │   │   ├── <span class="tolibov">ConfirmedOrder.jsx</span>           <span class="comment"># Саҳифаи тасдиқи фармоиш (Толибов)</span>
+│   │   │   └── <span class="tolibov">ConfirmedOrder.module.css</span>    <span class="comment"># Модули CSS-и Толибов</span>
+│   │   ├── <span class="folder kibriyo">auth/</span>                            <span class="comment"># ҲУДУДИ КИБРИЁ (React + Tailwind)</span>
+│   │   │   ├── <span class="kibriyo">AuthLayout.jsx</span>               <span class="comment"># Қолаби умумӣ: акс дар чап + форма дар рост</span>
+│   │   │   ├── <span class="kibriyo">SignInPage.jsx</span>               <span class="comment"># Воридшавӣ</span>
+│   │   │   ├── <span class="kibriyo">SignUpPage.jsx</span>               <span class="comment"># Сабти ном</span>
+│   │   │   ├── <span class="kibriyo">ResetPasswordPage.jsx</span>        <span class="comment"># Барқароркунии рамз</span>
+│   │   │   ├── <span class="kibriyo">CheckEmailPage.jsx</span>           <span class="comment"># Огоҳии санҷиши почта</span>
+│   │   │   ├── <span class="kibriyo">VerificationPage.jsx</span>         <span class="comment"># Воридкунии рамзи 4-рақамаи тасдиқ</span>
+│   │   │   └── <span class="kibriyo">CreateNewPasswordPage.jsx</span>    <span class="comment"># Сохтани рамзи нав</span>
+│   │   ├── <span class="folder">wishlist/</span>                        <span class="comment"># ҲУДУДИ КИБРИЁ + ТОЛИБОВ</span>
+│   │   │   ├── <span class="kibriyo">WishlistPage.jsx</span>             <span class="comment"># Рӯйхати либосҳои интихобшуда (Кибриё)</span>
+│   │   │   ├── <span class="tolibov">EmptyWishlist.jsx</span>            <span class="comment"># Рӯйхати холии дӯстдошта (Толибов)</span>
+│   │   │   └── <span class="tolibov">EmptyWishlist.module.css</span>     <span class="comment"># Модули CSS-и Толибов</span>
+│   │   ├── <span class="folder">account/</span>                         <span class="comment"># ҲУДУДИ КИБРИЁ + ТОЛИБОВ</span>
+│   │   │   ├── <span class="kibriyo">MyOrdersPage.jsx</span>             <span class="comment"># Таърихи фармоишҳо ва табҳо (Кибриё)</span>
+│   │   │   ├── <span class="kibriyo">OrderDetailsPage.jsx</span>         <span class="comment"># Муфассали фармоиш ва трекер (Кибриё)</span>
+│   │   │   ├── <span class="tolibov">ContactDetailsPage.jsx</span>       <span class="comment"># Маълумоти шахсии корбар (Толибов)</span>
+│   │   │   ├── <span class="tolibov">ContactDetails.module.css</span>   <span class="comment"># Модули CSS-и Толибов</span>
+│   │   │   ├── <span class="tolibov">AddAddressPage.jsx</span>           <span class="comment"># Иловаи суроғаи нав (Толибов)</span>
+│   │   │   └── <span class="tolibov">AddAddress.module.css</span>       <span class="comment"># Модули CSS-и Толибов</span>
+│   │   └── <span class="folder tolibov">error/</span>                           <span class="comment"># ҲУДУДИ ТОЛИБОВ (React + Модули CSS)</span>
+│   │       ├── <span class="tolibov">ErrorPage.jsx</span>                <span class="comment"># Саҳифаи хатогии 404</span>
+│   │       └── <span class="tolibov">ErrorPage.module.css</span>         <span class="comment"># Модули CSS-и Толибов</span>
+│   ├── <span class="lead">App.jsx</span>                              <span class="comment"># Маршрутизатсияи тамоми саҳифаҳо</span>
+│   ├── <span class="lead">index.css</span>                            <span class="comment"># Стилҳои асосии Tailwind CSS</span>
+│   └── <span class="lead">main.jsx</span>                             <span class="comment"># Нуқтаи асосии оғози React</span></code></pre>
+      </section>
+
+      
+      <!-- 4. Ҷойгиршавии аксҳо ва тарзи истифодабарии онҳо дар код -->
+      <section class="section-card">
+        <h2 class="section-title">🖼️ 4. Ҷойгиршавии аксҳо ва тарзи истифодабарии онҳо дар код</h2>
+        <p style="font-size: 14px; color: var(--gray-text); margin-bottom: 20px;">
+          Тамоми аксҳо мустақиман аз Figma CDN <strong>бо сифати 100% аслии студиявӣ</strong> (то <code>4096×3072</code>, то 15 МБ бе фишурдан) зеркашӣ шуда, дар папкаҳои шахсии ҳар як аъзои даста дар <code>src/assets/images/</code> тақсим шудаанд:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div style="background: #F7F3FF; border: 1px solid #8A33FD; border-radius: 12px; padding: 16px;">
+            <h4 style="color: #6610F2; font-weight: 800; font-size: 15px; margin-bottom: 8px;">📁 Амирхон (<code>src/assets/images/amirkhon/</code>)</h4>
+            <ul style="font-size: 12px; color: #3C4242; line-height: 1.8; list-style: square; padding-left: 18px;">
+              <li><code>home/</code> — баннерҳои Hero, Saving Zone, брендҳои Nike/Puma, фикру мулоҳизаҳо (32 файл, 122 MB)</li>
+              <li><code>products/</code> — либосҳои каталог: куртаҳо, поло, худи, куртаҳои занона (18 файл, 102 MB)</li>
+              <li><code>cart/</code> — молҳои дохили сабад (5 файл, 45 MB)</li>
+              <li><code>checkout/</code> — молҳои расмикунонии фармоиш (3 файл, 29 MB)</li>
+            </ul>
+          </div>
+
+          <div style="background: #FDF2F8; border: 1px solid #EC4899; border-radius: 12px; padding: 16px;">
+            <h4 style="color: #BE185D; font-weight: 800; font-size: 15px; margin-bottom: 8px;">📁 Кибриё (<code>src/assets/images/kibriyo/</code>)</h4>
+            <ul style="font-size: 12px; color: #3C4242; line-height: 1.8; list-style: square; padding-left: 18px;">
+              <li><code>auth/</code> — 6 акси аслии 4K барои саҳифаҳои воридшавӣ, сабти ном ва тасдиқи рамз (69 MB)</li>
+              <li><code>product-detail/</code> — Raven Hoodie hero, галерея, Similar Products (49 MB)</li>
+              <li><code>wishlist/</code> — либосҳои рӯйхати дӯстдошта (40 MB)</li>
+              <li><code>my-orders/</code> ва <code>order-details/</code> — аксҳои фармоишҳо ва трекер (40 MB)</li>
+            </ul>
+          </div>
+
+          <div style="background: #FFFBEB; border: 1px solid #F59E0B; border-radius: 12px; padding: 16px;">
+            <h4 style="color: #B45309; font-weight: 800; font-size: 15px; margin-bottom: 8px;">📁 Толибов (<code>src/assets/images/tolibov/</code>)</h4>
+            <ul style="font-size: 12px; color: #3C4242; line-height: 1.8; list-style: square; padding-left: 18px;">
+              <li><code>error-404/</code> — <code>404-illustration.svg</code> ва <code>.png</code></li>
+              <li><code>empty-cart/</code> — <code>empty-cart-illustration.svg</code> ва <code>.png</code></li>
+              <li><code>empty-wishlist/</code> — <code>empty-wishlist-illustration.svg</code> + 4 либоси тавсиявӣ</li>
+              <li><code>confirmed-order/</code> — <code>order-confirmed-illustration.svg</code> ва <code>.png</code></li>
+              <li><code>contact-details/</code> — <code>user-profile-avatar.png</code></li>
+              <li><code>add-address/</code> — <code>address-icon.png</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="font-size: 15px; font-weight: 800; margin-bottom: 8px;">💻 Намунаи истифодабарӣ дар коди React:</h3>
+
+        <div style="margin-bottom: 16px;">
+          <p style="font-size: 12px; font-weight: 700; color: #EC4899; margin-bottom: 4px;">Барои Кибриё (React + Tailwind):</p>
+          <div class="command-box">
+            <code>import signInBanner from '../../assets/images/kibriyo/auth/1-sign-in-banner.jpg';
+
+export default function SignInPage() {
+  return (
+    &lt;div className="flex min-h-screen"&gt;
+      &lt;div className="w-1/2 hidden lg:block"&gt;
+        &lt;img src={signInBanner} alt="Euphoria" className="w-full h-full object-cover" /&gt;
+      &lt;/div&gt;
+      {/* формаи воридшавӣ */}
+    &lt;/div&gt;
+  );
+}</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-size: 12px; font-weight: 700; color: #F59E0B; margin-bottom: 4px;">Барои Толибов (React + Modular CSS):</p>
+          <div class="command-box">
+            <code>import illustration from '../../assets/images/tolibov/empty-cart/empty-cart-illustration.svg';
+import styles from './EmptyCart.module.css';
+
+export default function EmptyCart() {
+  return (
+    &lt;div className={styles.container}&gt;
+      &lt;img src={illustration} alt="Empty Cart" className={styles.image} /&gt;
+      &lt;h2 className={styles.title}&gt;Your Cart is Empty and Sad :(&lt;/h2&gt;
+      &lt;button className={styles.button}&gt;Explore Products&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code>
+            <button class="copy-btn" onclick="copyCode(this)">Нусхабардорӣ</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Маслиҳатҳо ба таҳиягарон -->
+      <section class="section-card">
+        <h2 class="section-title">💡 5. Роҳнамои махсус барои таҳиягарон</h2>
+
+        <div class="alert-card alert-lead">
+          <strong style="color: var(--primary);">📌 Роҳнамо барои Амирхон (Тимлид):</strong><br>
+          • Аввал сохтори асосиро ба роҳ монед: <code>App.jsx</code> (роутер), <code>Header.jsx</code>, <code>Footer.jsx</code> ва контекстҳои <code>CartContext</code>, <code>WishlistContext</code>.<br>
+          • Компоненти умумии <code>ProductCard.jsx</code>-ро омода кунед, чунки ҳам шумо дар каталог ва ҳам Кибриё дар саҳифаи маҳсулот ва вишлист онро истифода мебаред.<br>
+          • Pull Request-ҳои фиристодаи аъзои дастаро санҷида, ба шохаи <code>main</code> ҳамроҳ намоед.
+        </div>
+
+        <div class="alert-card alert-kibriyo">
+          <strong style="color: #BE185D;">📌 Роҳнамо барои Кибриё:</strong><br>
+          • Шумо бо <strong>React + Tailwind CSS</strong> кор мекунед.<br>
+          • Барои саҳифаҳои бахши Auth қолаби умумии <code>AuthLayout.jsx</code>-ро истифода баред (акс дар тарафи чап ва форма дар рост), то ки коди такрорӣ кам шавад.<br>
+          • Саҳифаҳои шумо: <code>src/pages/auth/</code>, <code>ProductDetailPage.jsx</code>, <code>WishlistPage.jsx</code>, <code>MyOrdersPage.jsx</code>, <code>OrderDetailsPage.jsx</code>.<br>
+          • Аз компонентҳои тайёри UI (Button, ProductCard) истифода баред.
+        </div>
+
+        <div class="alert-card alert-tolibov">
+          <strong style="color: #B45309;">📌 Роҳнамо барои Толибов:</strong><br>
+          • Шумо бо <strong>React + Чиста CSS (CSS Modules)</strong> кор мекунед (бе истифодаи ҳатмии Tailwind).<br>
+          • Барои шумо саҳифаҳои аз ҳама сабуктарин ва ҷудогона дода шудаанд: <code>ErrorPage</code>, <code>EmptyCart</code>, <code>EmptyWishlist</code>, <code>ConfirmedOrder</code>, <code>ContactDetailsPage</code>, <code>AddAddressPage</code>.<br>
+          • Барои ҳар як саҳифа файли хоси худро кушоед: масалан дар паҳлӯи <code>EmptyCart.jsx</code> файли <code>EmptyCart.module.css</code>-ро созед.<br>
+          • Дар код чунин истифода баред: <code>import styles from './EmptyCart.module.css'</code> ва дар тег нависед: <code>&lt;div className={styles.container}&gt;</code>.<br>
+          • Стилҳои шумо бо ин роҳ комилан махсус (изолятсия) мешаванд ва ба дигар саҳифаҳои лоиҳа ҳеҷ халал намерасонанд!
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.lang-content').forEach(c => c.classList.remove('active'));
+
+      if (lang === 'ru') {
+        document.getElementById('content-ru').classList.add('active');
+        event.target.classList.add('active');
+        document.getElementById('header-title').innerText = 'Руководство для команды разработки';
+        document.getElementById('header-sub').innerText = 'Архитектура, задачи, правила Git и структура проекта';
+      } else {
+        document.getElementById('content-tj').classList.add('active');
+        event.target.classList.add('active');
+        document.getElementById('header-title').innerText = 'Дастурамал барои дастаи барномасозон';
+        document.getElementById('header-sub').innerText = 'Сохтори лоиҳа, нақшҳо, қоидаҳои Git ва иерархияи файлҳо';
+      }
+    }
+
+    function copyCode(btn) {
+      const code = btn.previousElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✓ Скопировано / Сабт шуд';
+        btn.style.background = '#8A33FD';
+        btn.style.color = '#FFFFFF';
+        setTimeout(() => {
+          btn.innerText = orig;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
