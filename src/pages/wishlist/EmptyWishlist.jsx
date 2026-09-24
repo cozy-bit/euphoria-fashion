@@ -1,6 +1,10 @@
 import React from 'react';
-import TolibovPlaceholder from '../../components/common/TolibovPlaceholder';
+import styles from './EmptyWishlist.module.css';
 
 export default function EmptyWishlist() {
-  return <TolibovPlaceholder pageName="Empty Wishlist" />;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Часть Толибова: Empty Wishlist</h1>
+    </div>
+  );
 }

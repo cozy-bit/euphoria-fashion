@@ -1,6 +1,10 @@
 import React from 'react';
-import TolibovPlaceholder from '../../components/common/TolibovPlaceholder';
+import styles from './EmptyCart.module.css';
 
 export default function EmptyCart() {
-  return <TolibovPlaceholder pageName="Empty Cart" />;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Часть Толибова: Empty Cart</h1>
+    </div>
+  );
 }

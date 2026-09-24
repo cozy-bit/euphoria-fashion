@@ -1,6 +1,10 @@
 import React from 'react';
-import TolibovPlaceholder from '../../components/common/TolibovPlaceholder';
+import styles from './ContactDetails.module.css';
 
 export default function ContactDetailsPage() {
-  return <TolibovPlaceholder pageName="Contact Details (My Info)" />;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Часть Толибова: Contact Details (My Info)</h1>
+    </div>
+  );
 }

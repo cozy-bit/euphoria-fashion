@@ -1,6 +1,10 @@
 import React from 'react';
-import TolibovPlaceholder from '../../components/common/TolibovPlaceholder';
+import styles from './ErrorPage.module.css';
 
 export default function ErrorPage() {
-  return <TolibovPlaceholder pageName="404 Error (Page Not Found)" />;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Часть Толибова: 404 Error (Page Not Found)</h1>
+    </div>
+  );
 }

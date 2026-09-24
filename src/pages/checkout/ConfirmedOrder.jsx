@@ -1,6 +1,10 @@
 import React from 'react';
-import TolibovPlaceholder from '../../components/common/TolibovPlaceholder';
+import styles from './ConfirmedOrder.module.css';
 
 export default function ConfirmedOrder() {
-  return <TolibovPlaceholder pageName="Order Confirmed" />;
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Часть Толибова: Order Confirmed</h1>
+    </div>
+  );
 }
