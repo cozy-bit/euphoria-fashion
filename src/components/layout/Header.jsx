@@ -4,11 +4,12 @@ import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useAuth } from '../../context/AuthContext';
+import defaultAvatar from '../../assets/images/tolibov/contact-details/user-profile-avatar.webp';
 
 export default function Header() {
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
-  const { user } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -91,22 +92,14 @@ export default function Header() {
               to="/wishlist"
               className="relative w-10 h-10 rounded-lg bg-[#F6F6F6] hover:bg-[#8A33FD]/10 text-[#3C4242] hover:text-[#8A33FD] flex items-center justify-center transition-colors"
               aria-label="Wishlist"
+              title="My Wishlist"
             >
               <Heart className="w-5 h-5" />
               {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#EC4899] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-xs">
+                <span className="absolute -top-1.5 -right-1.5 bg-[#EC4899] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs">
                   {wishlistCount}
                 </span>
               )}
-            </Link>
-
-            {/* User Profile */}
-            <Link
-              to="/profile"
-              className="w-10 h-10 rounded-lg bg-[#F6F6F6] hover:bg-[#8A33FD]/10 text-[#3C4242] hover:text-[#8A33FD] flex items-center justify-center transition-colors"
-              aria-label="User Profile"
-            >
-              <User className="w-5 h-5" />
             </Link>
 
             {/* Cart Bag */}
@@ -114,14 +107,41 @@ export default function Header() {
               to="/cart"
               className="relative w-10 h-10 rounded-lg bg-[#F6F6F6] hover:bg-[#8A33FD]/10 text-[#3C4242] hover:text-[#8A33FD] flex items-center justify-center transition-colors"
               aria-label="Shopping Cart"
+              title="My Shopping Cart"
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#8A33FD] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-xs">
+                <span className="absolute -top-1.5 -right-1.5 bg-[#8A33FD] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs">
                   {cartCount}
                 </span>
               )}
             </Link>
+
+            {/* User Profile / Sign In */}
+            {isAuthenticated ? (
+              <Link
+                to="/profile"
+                className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#8A33FD] hover:ring-2 hover:ring-[#8A33FD]/40 transition-all flex items-center justify-center bg-[#F6F6F6] shrink-0 active:scale-95 shadow-xs"
+                aria-label="User Profile"
+                title={user?.name ? `${user.name} (My Profile)` : 'My Profile'}
+              >
+                <img
+                  src={user?.avatar || defaultAvatar}
+                  alt={user?.name || 'Profile'}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
+            ) : (
+              <Link
+                to="/signin"
+                className="h-10 px-4 rounded-xl bg-[#8A33FD] text-white text-xs font-bold hover:bg-[#6610F2] transition-all shadow-xs flex items-center gap-1.5 active:scale-95 shrink-0"
+                aria-label="Sign In"
+                title="Sign In to your account"
+              >
+                <User className="w-4 h-4" />
+                <span className="hidden sm:inline">Sign In</span>
+              </Link>
+            )}
           </div>
         </div>
 
@@ -150,7 +170,7 @@ export default function Header() {
               </Link>
             ))}
 
-            <div className="pt-2 border-t border-[#F6F6F6] flex gap-2">
+            <div className="pt-2 border-t border-[#F6F6F6] flex items-center gap-3">
               <Link
                 to="/orders"
                 onClick={() => setMobileMenuOpen(false)}
@@ -159,13 +179,40 @@ export default function Header() {
                 My Orders
               </Link>
               <span className="text-[#BEBCBD]">•</span>
-              <Link
-                to="/signin"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-bold text-[#807D7E] hover:text-[#8A33FD] py-1.5"
-              >
-                Sign In
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <Link
+                    to="/profile"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-xs font-bold text-[#8A33FD] py-1.5 flex items-center gap-1.5"
+                  >
+                    <img
+                      src={user?.avatar || defaultAvatar}
+                      alt="Avatar"
+                      className="w-4 h-4 rounded-full object-cover border border-[#8A33FD]"
+                    />
+                    <span>{user?.name || 'My Profile'}</span>
+                  </Link>
+                  <span className="text-[#BEBCBD]">•</span>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="text-xs font-bold text-red-500 hover:text-red-700 py-1.5 cursor-pointer"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/signin"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-xs font-bold text-[#8A33FD] py-1.5"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}

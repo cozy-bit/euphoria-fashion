@@ -20,6 +20,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import { PRODUCTS } from "../../data/products";
+import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 
 // ======================================================
@@ -91,6 +93,8 @@ const stagger = {
 export default function ProductDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
+  const { toggleWishlist } = useWishlist();
 
   const product = PRODUCTS.find(
     (item) => String(item.id) === String(id)
@@ -205,6 +209,10 @@ export default function ProductDetailPage() {
   // ======================================================
 
   const handleAddToCart = () => {
+    if (product) {
+      addToCart(product, selectedSize, selectedColor, quantity);
+    }
+
     const cart = getCart();
 
     const existingIndex = cart.findIndex(
@@ -244,6 +252,10 @@ export default function ProductDetailPage() {
   // ======================================================
 
   const handleWishlist = () => {
+    if (product) {
+      toggleWishlist(product);
+    }
+
     const wishlist = getWishlist();
 
     const exists = wishlist.some(

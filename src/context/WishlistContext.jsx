@@ -39,7 +39,7 @@ export function WishlistProvider({ children }) {
   };
 
   const moveToCart = (product) => {
-    addToCart(product, 1, 'M', 'Default');
+    addToCart(product, 'M', product.colors?.[0] || 'Default', 1);
     removeFromWishlist(product.id);
   };
 

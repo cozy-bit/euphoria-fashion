@@ -21,7 +21,7 @@ export default function ProductCard({ product, className = '' }) {
   const handleAddToCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart(product, 1, product.sizes?.[0] || 'M', 'Default');
+    addToCart(product, product.sizes?.[0] || 'M', product.colors?.[0] || 'Default', 1);
   };
 
   return (

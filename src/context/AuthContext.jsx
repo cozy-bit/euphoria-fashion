@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import defaultAvatar from '../assets/images/tolibov/contact-details/user-profile-avatar.webp';
 
 const AuthContext = createContext();
 
@@ -15,9 +16,13 @@ const getUsers = () => {
 
 const getCurrentUser = () => {
   try {
-    return JSON.parse(
-      localStorage.getItem(CURRENT_USER_KEY) || 'null'
-    );
+    const raw = localStorage.getItem(CURRENT_USER_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && !parsed.avatar) {
+      parsed.avatar = defaultAvatar;
+    }
+    return parsed;
   } catch {
     return null;
   }
@@ -54,7 +59,7 @@ export function AuthProvider({ children }) {
       phone: normalizedPhone,
       password,
       email: '',
-      avatar: '',
+      avatar: defaultAvatar,
       address: {
         firstName: '',
         lastName: '',
@@ -103,6 +108,10 @@ export function AuthProvider({ children }) {
         success: false,
         message: 'Incorrect phone number or password.'
       };
+    }
+
+    if (!foundUser.avatar) {
+      foundUser.avatar = defaultAvatar;
     }
 
     localStorage.setItem(

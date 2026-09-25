@@ -50,13 +50,35 @@ export function CartProvider({ children }) {
   const [discountAmount, setDiscountAmount] = useState(30.00); // $30 savings matching Screenshot 2
   const [shippingFee] = useState(5.00);
 
-  const addToCart = (product, size = 'M', color = 'Default', quantity = 1) => {
+  const addToCart = (product, arg2 = 'M', arg3 = 'Default', arg4 = 1) => {
+    if (!product) return;
+
+    let size = 'M';
+    let color = 'Default';
+    let quantity = 1;
+
+    // Support both signatures:
+    // (product, size, color, quantity) AND (product, quantity, size, color)
+    if (typeof arg2 === 'number') {
+      quantity = Math.max(1, Math.round(arg2) || 1);
+      size = typeof arg3 === 'string' && arg3.trim() && arg3 !== 'Default' ? arg3 : 'M';
+      color = typeof arg4 === 'string' && arg4.trim() ? arg4 : (product.colors?.[0] || 'Default');
+    } else {
+      size = typeof arg2 === 'string' && arg2.trim() ? arg2 : 'M';
+      color = typeof arg3 === 'string' && arg3.trim() ? arg3 : (product.colors?.[0] || 'Default');
+      quantity = typeof arg4 === 'number' ? Math.max(1, Math.round(arg4) || 1) : 1;
+    }
+
+    const priceNum = typeof product.price === 'number'
+      ? product.price
+      : parseFloat(String(product.price).replace(/[^0-9.]/g, '')) || 0;
+
     setCartItems(prev => {
       const existing = prev.find(item => item.id === product.id && item.selectedSize === size);
       if (existing) {
         return prev.map(item =>
           item.id === product.id && item.selectedSize === size
-            ? { ...item, quantity: item.quantity + quantity }
+            ? { ...item, quantity: (Number(item.quantity) || 1) + quantity }
             : item
         );
       }
@@ -64,6 +86,7 @@ export function CartProvider({ children }) {
         ...prev,
         {
           ...product,
+          price: priceNum,
           cartId: `cart-${Date.now()}-${Math.random()}`,
           selectedSize: size,
           selectedColor: color,
@@ -83,7 +106,8 @@ export function CartProvider({ children }) {
       prev
         .map(item => {
           if (item.cartId === cartId) {
-            const newQty = item.quantity + delta;
+            const currentQty = Number(item.quantity) || 1;
+            const newQty = currentQty + delta;
             return newQty > 0 ? { ...item, quantity: newQty } : null;
           }
           return item;
@@ -105,9 +129,15 @@ export function CartProvider({ children }) {
     return { success: false, message: 'Invalid coupon code' };
   };
 
-  const cartSubtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const cartSubtotal = cartItems.reduce(
+    (acc, item) => acc + (Number(item.price) || 0) * (Number(item.quantity) || 1),
+    0
+  );
   const grandTotal = Math.max(0, cartSubtotal + shippingFee - (appliedCoupon ? discountAmount : 0));
-  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const cartCount = cartItems.reduce(
+    (acc, item) => acc + (Number(item.quantity) || 1),
+    0
+  );
 
   return (
     <CartContext.Provider

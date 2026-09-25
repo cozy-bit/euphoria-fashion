@@ -24,7 +24,10 @@ export default function CartPage() {
     setCouponMessage(res);
   };
 
-  const calculatedSubTotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const calculatedSubTotal = cartItems.reduce(
+    (acc, item) => acc + (Number(item.price) || 0) * (Number(item.quantity) || 1),
+    0
+  );
   const calculatedGrandTotal = calculatedSubTotal + (cartItems.length > 0 ? shippingFee : 0);
 
   if (cartItems.length === 0) {
@@ -97,7 +100,7 @@ export default function CartPage() {
 
               {/* Price */}
               <div className="col-span-4 md:col-span-2 text-left md:text-center text-sm sm:text-base font-bold text-[#3C4242]">
-                ${item.price.toFixed(2)}
+                ${(Number(item.price) || 0).toFixed(2)}
               </div>
 
               {/* Quantity Counter */}
@@ -110,7 +113,7 @@ export default function CartPage() {
                   >
                     –
                   </button>
-                  <span className="w-4 text-center">{item.quantity}</span>
+                  <span className="w-4 text-center">{Number(item.quantity) || 1}</span>
                   <button
                     onClick={() => updateQuantity(item.cartId, 1)}
                     className="w-5 h-5 flex items-center justify-center hover:text-[#8A33FD] cursor-pointer"
@@ -128,7 +131,7 @@ export default function CartPage() {
 
               {/* Subtotal */}
               <div className="hidden md:block col-span-2 text-center text-sm sm:text-base font-bold text-[#3C4242]">
-                ${(item.price * item.quantity).toFixed(2)}
+                ${((Number(item.price) || 0) * (Number(item.quantity) || 1)).toFixed(2)}
               </div>
 
               {/* Action (Delete Icon in Purple #8A33FD) */}
