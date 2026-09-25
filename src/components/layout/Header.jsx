@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -112,11 +113,20 @@ export default function Header() {
               title="My Wishlist"
             >
               <Heart className="w-5 h-5" />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#EC4899] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs">
-                  {wishlistCount}
-                </span>
-              )}
+              <AnimatePresence>
+                {wishlistCount > 0 && (
+                  <motion.span
+                    key="wishlist-counter"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                    className="absolute -top-1.5 -right-1.5 bg-[#EC4899] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs"
+                  >
+                    {wishlistCount}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
 
             {/* Cart Bag */}
@@ -127,11 +137,20 @@ export default function Header() {
               title="My Shopping Cart"
             >
               <ShoppingBag className="w-5 h-5" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 bg-[#8A33FD] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs">
-                  {cartCount}
-                </span>
-              )}
+              <AnimatePresence>
+                {cartCount > 0 && (
+                  <motion.span
+                    key="cart-counter"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                    className="absolute -top-1.5 -right-1.5 bg-[#8A33FD] text-white text-[10px] font-black min-w-5 h-5 px-1 rounded-full flex items-center justify-center shadow-xs"
+                  >
+                    {cartCount}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
 
             {/* User Profile / Sign In */}

@@ -25,39 +25,6 @@ import { useWishlist } from "../../context/WishlistContext";
 
 
 // ======================================================
-// HELPERS
-// ======================================================
-
-const getCart = () => {
-  try {
-    return JSON.parse(localStorage.getItem("cart") || "[]");
-  } catch {
-    return [];
-  }
-};
-
-const saveCart = (cart) => {
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Сообщаем другим компонентам, что корзина изменилась
-  window.dispatchEvent(new Event("cartUpdated"));
-};
-
-const getWishlist = () => {
-  try {
-    return JSON.parse(localStorage.getItem("wishlist") || "[]");
-  } catch {
-    return [];
-  }
-};
-
-const saveWishlist = (wishlist) => {
-  localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  window.dispatchEvent(new Event("wishlistUpdated"));
-};
-
-
-// ======================================================
 // ANIMATION
 // ======================================================
 
@@ -94,7 +61,7 @@ export default function ProductDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  const { toggleWishlist } = useWishlist();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   const product = PRODUCTS.find(
     (item) => String(item.id) === String(id)
@@ -127,15 +94,7 @@ export default function ProductDetailPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isVideoOpen]);
 
-  const [isFavorite, setIsFavorite] = useState(() => {
-    if (!product) return false;
-
-    const wishlist = getWishlist();
-
-    return wishlist.some(
-      (item) => String(item.id) === String(product.id)
-    );
-  });
+  const isFavorite = product ? isInWishlist(product.id) : false;
 
   const [addedMessage, setAddedMessage] = useState(false);
 
@@ -222,39 +181,11 @@ export default function ProductDetailPage() {
   const handleAddToCart = () => {
     if (product) {
       addToCart(product, selectedSize, selectedColor, quantity);
+      setAddedMessage(true);
+      setTimeout(() => {
+        setAddedMessage(false);
+      }, 2200);
     }
-
-    const cart = getCart();
-
-    const existingIndex = cart.findIndex(
-      (item) =>
-        String(item.id) === String(product.id) &&
-        item.size === selectedSize &&
-        item.color === selectedColor
-    );
-
-    if (existingIndex !== -1) {
-      cart[existingIndex].quantity += quantity;
-    } else {
-      cart.push({
-        id: product.id,
-        title: product.title,
-        brand: product.brand,
-        image: product.image,
-        price: product.price,
-        size: selectedSize,
-        color: selectedColor,
-        quantity,
-      });
-    }
-
-    saveCart(cart);
-
-    setAddedMessage(true);
-
-    setTimeout(() => {
-      setAddedMessage(false);
-    }, 2200);
   };
 
 
@@ -266,31 +197,6 @@ export default function ProductDetailPage() {
     if (product) {
       toggleWishlist(product);
     }
-
-    const wishlist = getWishlist();
-
-    const exists = wishlist.some(
-      (item) => String(item.id) === String(product.id)
-    );
-
-    let updatedWishlist;
-
-    if (exists) {
-      updatedWishlist = wishlist.filter(
-        (item) => String(item.id) !== String(product.id)
-      );
-
-      setIsFavorite(false);
-    } else {
-      updatedWishlist = [
-        ...wishlist,
-        product,
-      ];
-
-      setIsFavorite(true);
-    }
-
-    saveWishlist(updatedWishlist);
   };
 
 
@@ -1673,38 +1579,13 @@ function ProductCard({
   product,
   onClick,
 }) {
-  const [favorite, setFavorite] = useState(() => {
-    const wishlist = getWishlist();
-
-    return wishlist.some(
-      (item) => String(item.id) === String(product.id)
-    );
-  });
-
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const favorite = product ? isInWishlist(product.id) : false;
 
   const toggleFavorite = (e) => {
     e.stopPropagation();
-
-    const wishlist = getWishlist();
-
-    const exists = wishlist.some(
-      (item) => String(item.id) === String(product.id)
-    );
-
-    if (exists) {
-      const updated = wishlist.filter(
-        (item) => String(item.id) !== String(product.id)
-      );
-
-      saveWishlist(updated);
-      setFavorite(false);
-    } else {
-      saveWishlist([
-        ...wishlist,
-        product,
-      ]);
-
-      setFavorite(true);
+    if (product) {
+      toggleWishlist(product);
     }
   };
 

@@ -1,54 +1,42 @@
-import React, { createContext, useContext, useState } from 'react';
-import productBlueFlowerTop from '../assets/images/amirkhon/products/product-blue-flower-top.webp';
-import productLavenderHoodie from '../assets/images/amirkhon/products/product-lavender-hoodie.webp';
-import productBlackSweatshirt from '../assets/images/amirkhon/products/product-black-sweatshirt.webp';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
+const STORAGE_KEY = 'euphoria_cart';
+
 export function CartProvider({ children }) {
-  // Pre-seed matching Screenshot 1 & 2
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 201,
-      cartId: 'item-1',
-      title: 'Blue Flower Print Crop Top',
-      brand: "Euphoria Women's",
-      price: 29.00,
-      selectedSize: 'M',
-      selectedColor: 'Yellow',
-      shippingType: 'FREE',
-      image: productBlueFlowerTop,
-      quantity: 1
-    },
-    {
-      id: 202,
-      cartId: 'item-2',
-      title: 'Lavender Hoodie',
-      brand: "Nike's Brand",
-      price: 119.00,
-      selectedSize: 'XXL',
-      selectedColor: 'Lavender',
-      shippingType: 'FREE',
-      image: productLavenderHoodie,
-      quantity: 2
-    },
-    {
-      id: 203,
-      cartId: 'item-3',
-      title: 'Black Sweatshirt',
-      brand: "Jhanvi's Brand",
-      price: 123.00,
-      selectedSize: 'XXL',
-      selectedColor: 'Black',
-      shippingType: '$5.00',
-      image: productBlackSweatshirt,
-      quantity: 2
+  // Start with empty cart by default, or load existing user items from localStorage
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          // Filter out any legacy dummy/mock items (201, 202, 203)
+          const realItems = parsed.filter(item => item.id !== 201 && item.id !== 202 && item.id !== 203);
+          return realItems;
+        }
+      }
+    } catch {
+      // Ignore parse error
     }
-  ]);
+    return [];
+  });
 
   const [appliedCoupon, setAppliedCoupon] = useState(null);
-  const [discountAmount, setDiscountAmount] = useState(30.00); // $30 savings matching Screenshot 2
-  const [shippingFee] = useState(5.00);
+  const [discountAmount, setDiscountAmount] = useState(0.00);
+  const baseShippingFee = 5.00;
+
+  // Persist cart to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
+      // Also clean up any legacy 'cart' key
+      localStorage.removeItem('cart');
+    } catch (e) {
+      console.error('Failed to save cart to localStorage', e);
+    }
+  }, [cartItems]);
 
   const addToCart = (product, arg2 = 'M', arg3 = 'Default', arg4 = 1) => {
     if (!product) return;
@@ -74,10 +62,12 @@ export function CartProvider({ children }) {
       : parseFloat(String(product.price).replace(/[^0-9.]/g, '')) || 0;
 
     setCartItems(prev => {
-      const existing = prev.find(item => item.id === product.id && item.selectedSize === size);
+      const existing = prev.find(
+        item => String(item.id) === String(product.id) && item.selectedSize === size
+      );
       if (existing) {
         return prev.map(item =>
-          item.id === product.id && item.selectedSize === size
+          String(item.id) === String(product.id) && item.selectedSize === size
             ? { ...item, quantity: (Number(item.quantity) || 1) + quantity }
             : item
         );
@@ -87,7 +77,7 @@ export function CartProvider({ children }) {
         {
           ...product,
           price: priceNum,
-          cartId: `cart-${Date.now()}-${Math.random()}`,
+          cartId: `cart-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
           selectedSize: size,
           selectedColor: color,
           shippingType: 'FREE',
@@ -116,10 +106,19 @@ export function CartProvider({ children }) {
     );
   };
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => {
+    setCartItems([]);
+    setAppliedCoupon(null);
+    setDiscountAmount(0);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Ignore
+    }
+  };
 
   const applyCoupon = (code) => {
-    if (!code) return { success: false, message: 'Please enter a code' };
+    if (!code) return { success: false, message: 'Please enter a coupon code' };
     const upper = code.trim().toUpperCase();
     if (upper === 'EUPHORIA20' || upper === 'SAVE30' || upper === 'DISCOUNT') {
       setAppliedCoupon(upper);
@@ -133,11 +132,16 @@ export function CartProvider({ children }) {
     (acc, item) => acc + (Number(item.price) || 0) * (Number(item.quantity) || 1),
     0
   );
-  const grandTotal = Math.max(0, cartSubtotal + shippingFee - (appliedCoupon ? discountAmount : 0));
+
   const cartCount = cartItems.reduce(
     (acc, item) => acc + (Number(item.quantity) || 1),
     0
   );
+
+  const shippingFee = cartItems.length > 0 ? baseShippingFee : 0;
+  const grandTotal = cartItems.length > 0
+    ? Math.max(0, cartSubtotal + shippingFee - (appliedCoupon ? discountAmount : 0))
+    : 0;
 
   return (
     <CartContext.Provider
@@ -162,5 +166,9 @@ export function CartProvider({ children }) {
 }
 
 export function useCart() {
-  return useContext(CartContext);
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used within a CartProvider');
+  }
+  return context;
 }

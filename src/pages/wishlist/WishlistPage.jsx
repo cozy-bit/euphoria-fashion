@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { X, ShoppingCart, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useWishlist } from '../../context/WishlistContext';
+import EmptyWishlist from './EmptyWishlist';
 
 export default function WishlistPage() {
   const {
@@ -11,6 +12,10 @@ export default function WishlistPage() {
     removeFromWishlist,
     moveToCart,
   } = useWishlist();
+
+  if (wishlistItems.length === 0) {
+    return <EmptyWishlist />;
+  }
 
   return (
     <main className="w-full bg-white">
@@ -231,7 +236,7 @@ export default function WishlistPage() {
                     </p>
 
                     <p className="mt-2 text-lg font-bold text-[#3C4242]">
-                      ${product.price.toFixed(2)}
+                      ${Number(product.price || 0).toFixed(2)}
                     </p>
 
                   </div>
