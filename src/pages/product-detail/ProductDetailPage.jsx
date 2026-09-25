@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -115,6 +115,17 @@ export default function ProductDetailPage() {
   const [activeTab, setActiveTab] = useState("description");
 
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isVideoOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsVideoOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isVideoOpen]);
 
   const [isFavorite, setIsFavorite] = useState(() => {
     if (!product) return false;
@@ -1423,26 +1434,6 @@ export default function ProductDetailPage() {
                 "
               />
 
-              <button
-                onClick={() => setIsVideoOpen(false)}
-                className="
-                  absolute
-                  top-4
-                  right-4
-                  w-10
-                  h-10
-                  rounded-full
-                  bg-white
-                  flex
-                  items-center
-                  justify-center
-                  hover:scale-105
-                  transition
-                "
-              >
-                <CloseIcon />
-              </button>
-
               <div
                 className="
                   absolute
@@ -1450,18 +1441,23 @@ export default function ProductDetailPage() {
                   flex
                   items-center
                   justify-center
+                  pointer-events-none
                 "
               >
-
                 <div
                   className="
                     w-16
                     h-16
                     rounded-full
                     bg-white
+                    shadow-lg
                     flex
                     items-center
                     justify-center
+                    pointer-events-auto
+                    cursor-pointer
+                    hover:scale-105
+                    transition-transform
                   "
                 >
                   <PlayArrowIcon
@@ -1471,8 +1467,40 @@ export default function ProductDetailPage() {
                     }}
                   />
                 </div>
-
               </div>
+
+              {/* Close Button with high z-index and explicit stopPropagation */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIsVideoOpen(false);
+                }}
+                aria-label="Close video"
+                className="
+                  absolute
+                  top-4
+                  right-4
+                  z-30
+                  w-10
+                  h-10
+                  rounded-full
+                  bg-white
+                  text-[#3C4242]
+                  shadow-lg
+                  flex
+                  items-center
+                  justify-center
+                  hover:scale-110
+                  active:scale-95
+                  hover:bg-neutral-100
+                  transition-all
+                  cursor-pointer
+                "
+              >
+                <CloseIcon sx={{ fontSize: 20 }} />
+              </button>
 
             </motion.div>
 
