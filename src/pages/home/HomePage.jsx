@@ -52,7 +52,7 @@ import avatar1 from '../../assets/images/amirkhon/home/feedback-avatar-1.webp';
 import avatar2 from '../../assets/images/amirkhon/home/feedback-avatar-2.webp';
 import avatar3 from '../../assets/images/amirkhon/home/feedback-avatar-3.webp';
 
-// 1. HERO SLIDES DATA - Original authentic Summer Value Pack banner from Figma
+// 1. HERO SLIDES DATA (2 Slides)
 const HERO_SLIDES = [
   {
     id: 1,
@@ -60,10 +60,25 @@ const HERO_SLIDES = [
     title: 'Summer Value Pack',
     description: 'cool / colorful / comfy',
     bgColor: '#00AEEF',
+    bgGradient: 'from-[#0284C7] via-[#00AEEF] to-[#0369A1]',
+    glowColor: 'bg-cyan-200/25',
     image: heroSummerPack,
     imageAlt: 'Summer Value Pack Model',
     link: '/products?cat=women',
     btnText: 'Shop Now'
+  },
+  {
+    id: 2,
+    subTitle: 'Multipacks & Combos',
+    title: 'Breezy Summer Deals',
+    description: 'breathable / lightweight / vibrant',
+    bgColor: '#F9A03F',
+    bgGradient: 'from-[#C2410C] via-[#EA580C] to-[#D97706]',
+    glowColor: 'bg-amber-200/25',
+    image: catWomenYellowPolka,
+    imageAlt: 'Breezy Summer Deals Model',
+    link: '/products?cat=combos',
+    btnText: 'Discover Combos'
   }
 ];
 
@@ -204,14 +219,15 @@ export default function HomePage() {
       <section
         onMouseEnter={() => setIsHeroPaused(true)}
         onMouseLeave={() => setIsHeroPaused(false)}
-        className="relative overflow-hidden w-full h-[calc(100vh-80px)] min-h-[580px] max-h-[920px] flex items-center select-none bg-gradient-to-br from-[#0284C7] via-[#00AEEF] to-[#0369A1]"
+        className={`relative overflow-hidden w-full h-[calc(100vh-80px)] min-h-[580px] max-h-[920px] flex items-center select-none bg-gradient-to-br ${currentHero.bgGradient || 'from-[#0284C7] via-[#00AEEF] to-[#0369A1]'} transition-all duration-700`}
+        style={{ backgroundColor: currentHero.bgColor }}
       >
         {/* Ambient Studio Lighting Glows for Depth & Color Grading */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Spotlight behind model */}
           <div className="absolute right-[8%] top-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full bg-white/20 blur-3xl" />
-          {/* Soft ambient cyan bloom */}
-          <div className="absolute left-[5%] top-[12%] w-[400px] h-[400px] rounded-full bg-cyan-200/25 blur-3xl" />
+          {/* Soft ambient bloom matching slide tone */}
+          <div className={`absolute left-[5%] top-[12%] w-[400px] h-[400px] rounded-full ${currentHero.glowColor || 'bg-cyan-200/25'} blur-3xl transition-all duration-700`} />
           {/* Subtle bottom vignette */}
           <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/10 to-transparent" />
         </div>
