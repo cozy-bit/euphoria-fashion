@@ -1,78 +1,147 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-import AuthLayout from "./AuthLayout";
+import AuthLayout from './AuthLayout';
+
+import verificationImage from '../../assets/images/kibriyo/auth/5-verification-banner.webp';
+
+const RESET_CODE_KEY = 'resetCode';
 
 export default function VerificationPage() {
   const navigate = useNavigate();
 
-  const [code, setCode] = useState("");
-  const [error, setError] = useState("");
+  const [code, setCode] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const savedCode =
-      localStorage.getItem("resetCode") || "0757";
+    const savedCode = localStorage.getItem(
+      RESET_CODE_KEY
+    );
 
-    if (code !== savedCode) {
-      setError("Invalid verification code.");
+    if (!savedCode) {
+      setError(
+        'Verification code has expired. Please request a new one.'
+      );
       return;
     }
 
-    localStorage.setItem(
-      "verificationPassed",
-      "true"
-    );
+    if (code !== savedCode) {
+      setError('Incorrect verification code.');
+      return;
+    }
 
-    navigate("/create-new-password");
+    setError('');
+
+    navigate('/create-new-password');
   };
 
   return (
-    <AuthLayout>
-      <h1 className="text-[34px] font-bold">
-        Verification
-      </h1>
+    <AuthLayout image={verificationImage}>
 
-      <p className="mt-2 text-[16px] text-[#858585]">
-        Verify your code.
-      </p>
-
-      <form
-        onSubmit={handleSubmit}
-        className="mt-9"
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 25
+        }}
+        animate={{
+          opacity: 1,
+          y: 0
+        }}
       >
-        <label className="text-[17px]">
+
+        <h1 className="
+          text-[34px]
+          sm:text-[38px]
+          font-semibold
+        ">
           Verification Code
-        </label>
+        </h1>
 
-        <input
-          value={code}
-          onChange={(e) => {
-            setCode(e.target.value);
-            setError("");
-          }}
-          placeholder="0757"
-          maxLength={4}
-          className="mt-2 h-[54px] w-full rounded-[8px] border border-[#999] px-5 text-[16px] outline-none focus:border-[#8b35f5]"
-        />
+        <p className="
+          mt-3
+          text-[#888]
+        ">
+          Enter the 6-digit code sent to your email.
+        </p>
 
-        {error && (
-          <p className="mt-3 text-[14px] text-red-500">
-            {error}
-          </p>
-        )}
-
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          type="submit"
-          className="mt-8 h-[55px] w-[166px] rounded-[7px] bg-[#8b35f5] text-white"
+        <form
+          onSubmit={handleSubmit}
+          className="mt-12"
         >
-          Verify Code
-        </motion.button>
-      </form>
+
+          <label className="block mb-3">
+            Verification Code
+          </label>
+
+          <input
+            type="text"
+            inputMode="numeric"
+            maxLength={6}
+            value={code}
+            onChange={(e) => {
+              setCode(
+                e.target.value
+                  .replace(/\D/g, '')
+                  .slice(0, 6)
+              );
+
+              setError('');
+            }}
+            placeholder="000000"
+            className="
+              w-full
+              h-[62px]
+              border
+              border-[#777]
+              rounded-[8px]
+              px-5
+              text-[20px]
+              tracking-[8px]
+              outline-none
+              focus:border-[#8B32F5]
+            "
+          />
+
+          {error && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="
+                mt-4
+                text-sm
+                text-[#e63962]
+              "
+            >
+              {error}
+            </motion.p>
+          )}
+
+          <motion.button
+            whileHover={{
+              scale: 1.02
+            }}
+            whileTap={{
+              scale: 0.98
+            }}
+            className="
+              mt-7
+              w-[180px]
+              h-[55px]
+              rounded-[7px]
+              bg-[#8B32F5]
+              text-white
+            "
+          >
+            Verify Code
+          </motion.button>
+
+        </form>
+
+      </motion.div>
+
     </AuthLayout>
   );
 }
