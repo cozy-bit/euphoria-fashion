@@ -48,9 +48,9 @@ export default function WishlistPage() {
         {/* EMPTY */}
         {wishlistItems.length === 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
             className="
               min-h-[420px]
               flex
@@ -117,11 +117,9 @@ export default function WishlistPage() {
                   layout
                   initial={{
                     opacity: 0,
-                    y: 20,
                   }}
                   animate={{
                     opacity: 1,
-                    y: 0,
                   }}
                   exit={{
                     opacity: 0,
