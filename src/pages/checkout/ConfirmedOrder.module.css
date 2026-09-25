@@ -56,7 +56,36 @@
   font-size: 13px;
   color: #807d7e;
   line-height: 1.6;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+}
+
+.infoBox {
+  background-color: #faf9fb;
+  border: 1px solid #ede8f5;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.infoLabel {
+  color: #807d7e;
+  font-weight: 500;
+}
+
+.infoValue {
+  font-weight: 700;
+  color: #3c4242;
 }
 
 .actionRow {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Trash2, ChevronRight, ShoppingBag, ArrowLeft } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import EmptyCart from './EmptyCart';
 
 export default function CartPage() {
   const {
@@ -27,23 +28,7 @@ export default function CartPage() {
   const calculatedGrandTotal = calculatedSubTotal + (cartItems.length > 0 ? shippingFee : 0);
 
   if (cartItems.length === 0) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center gap-6">
-        <div className="w-20 h-20 rounded-full bg-[#F4ECFF] flex items-center justify-center text-[#8A33FD]">
-          <ShoppingBag className="w-10 h-10" />
-        </div>
-        <h2 className="text-3xl font-black text-[#3C4242]">Your cart is empty and sad :(</h2>
-        <p className="text-sm text-[#807D7E] max-w-md">
-          Add items to your cart and make it happy! Check out the latest summer collection in our store.
-        </p>
-        <Link
-          to="/products"
-          className="px-8 py-3.5 bg-[#8A33FD] text-white font-bold rounded-xl shadow-lg hover:bg-[#6610F2] transition-colors"
-        >
-          Continue Shopping
-        </Link>
-      </div>
-    );
+    return <EmptyCart />;
   }
 
   return (

@@ -32,6 +32,8 @@ import ConfirmedOrder from './pages/checkout/ConfirmedOrder';
 import ContactDetailsPage from './pages/account/ContactDetailsPage';
 import AddAddressPage from './pages/account/AddAddressPage';
 import ErrorPage from './pages/error/ErrorPage';
+import EmptyCart from './pages/cart/EmptyCart';
+import EmptyWishlist from './pages/wishlist/EmptyWishlist';
 
 export default function App() {
   return (
@@ -54,15 +56,18 @@ export default function App() {
                 <Route path="/products" element={<ProductsListPage />} />
                 <Route path="/product/:id" element={<ProductDetailPage />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/empty-cart" element={<EmptyCart />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/order-success" element={<ConfirmedOrder />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
+                <Route path="/empty-wishlist" element={<EmptyWishlist />} />
                 <Route path="/orders" element={<MyOrdersPage />} />
                 <Route path="/orders/:id" element={<OrderDetailsPage />} />
                 <Route path="/profile" element={<ContactDetailsPage />} />
                 <Route path="/profile/address/new" element={<AddAddressPage />} />
                 
                 {/* 404 Error page within or outside layout */}
+                <Route path="/404" element={<ErrorPage />} />
                 <Route path="*" element={<ErrorPage />} />
               </Route>
             </Routes>

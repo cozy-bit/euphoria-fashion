@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 40px 20px 80px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -16,6 +16,7 @@
   max-width: 520px;
   width: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 60px;
 }
 
 .imageWrapper {
@@ -62,4 +63,98 @@
 .ctaButton:hover {
   background-color: #6610f2;
   transform: translateY(-1px);
+}
+
+/* Recommended Products Showcase */
+.recommendedSection {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.recommendedTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: #3c4242;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.recommendedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .recommendedGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .recommendedGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.productCard {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.productImageWrapper {
+  width: 100%;
+  height: 280px;
+  background-color: #f6f6f6;
+  overflow: hidden;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.04);
+}
+
+.productInfo {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.productName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3c4242;
+  margin: 0;
+}
+
+.productBrand {
+  font-size: 12px;
+  color: #807d7e;
+  margin: 0;
+}
+
+.productPrice {
+  font-size: 15px;
+  font-weight: 800;
+  color: #3c4242;
+  margin-top: 4px;
 }

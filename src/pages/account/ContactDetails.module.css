@@ -112,3 +112,78 @@
 .saveBtn:hover {
   background-color: #6610f2;
 }
+
+/* Address Section in Profile */
+.addressSection {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.addressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: #3c4242;
+  margin: 0;
+}
+
+.addAddressBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f4ecff;
+  color: #8a33fd;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.addAddressBtn:hover {
+  background-color: #ebd9fc;
+}
+
+.addressCard {
+  background-color: #fcfcfc;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.addressBadge {
+  display: inline-block;
+  background-color: #e6e6e6;
+  color: #3c4242;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.addressName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3c4242;
+  margin-bottom: 4px;
+}
+
+.addressText {
+  font-size: 13px;
+  color: #807d7e;
+  line-height: 1.5;
+  margin: 0;
+}
