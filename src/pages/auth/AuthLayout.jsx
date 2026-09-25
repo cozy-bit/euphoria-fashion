@@ -1,87 +1,141 @@
-import { motion } from "framer-motion";
-import { Link, useLocation } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";;
 
-import SearchIcon from "@mui/icons-material/Search";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SearchIcon from '@mui/icons-material/Search';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-import signInImage from "../../assets/images/kibriyo/auth/1-sign-in-banner.webp";
-import signUpImage from "../../assets/images/kibriyo/auth/2-sign-up-banner.webp";
-import resetImage from "../../assets/images/kibriyo/auth/3-reset-password-banner.webp";
-import checkEmailImage from "../../assets/images/kibriyo/auth/4-check-email-banner.webp";
-import verificationImage from "../../assets/images/kibriyo/auth/5-verification-banner.webp";
-import createPasswordImage from "../../assets/images/kibriyo/auth/6-create-password-banner.webp";
+import authImage from '../../assets/images/kibriyo/auth/2-sign-up-banner.webp';
 
-const images = {
-  "/signin": signInImage,
-  "/signup": signUpImage,
-  "/reset-password": resetImage,
-  "/check-email": checkEmailImage,
-  "/verification": verificationImage,
-  "/create-new-password": createPasswordImage,
-};
-
-export default function AuthLayout({ children }) {
-  const location = useLocation();
-
-  const image = images[location.pathname] || signInImage;
-
+export default function AuthLayout({
+  children,
+  image = authImage,
+  activePage = ''
+}) {
   return (
-    <div className="min-h-screen bg-white text-[#333] overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden">
 
-      {/* HEADER */}
-      <header className="h-[110px] border-b border-[#d7d7d7] bg-white">
-        <div className="h-full max-w-[1250px] mx-auto px-5 flex items-center justify-between gap-8">
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="
+          h-[109px]
+          border-b border-[#dedede]
+          px-6 sm:px-10 lg:px-[7%]
+          flex items-center
+        "
+      >
+        <div className="w-full flex items-center gap-6">
 
-          {/* LOGO */}
-          <Link to="/" className="shrink-0">
-            <div className="font-serif italic font-bold text-[28px] leading-none">
-              Euphoria
-            </div>
+          <Link
+            to="/signup"
+            className="
+              text-[28px]
+              italic
+              font-serif
+              font-bold
+              leading-none
+              text-[#333]
+            "
+          >
+            Euphoria
 
-            <div className="text-[7px] text-center italic -mt-1">
+            <span className="
+              block
+              text-[7px]
+              text-center
+              mt-1
+            ">
               Keep it classy.
-            </div>
+            </span>
           </Link>
 
-          {/* SEARCH */}
-          <div className="hidden md:flex w-[180px] h-[46px] bg-[#f6f6f6] rounded-[8px] items-center px-5 gap-3 text-[#777]">
-            <SearchIcon sx={{ fontSize: 22 }} />
+          <div className="
+            hidden md:flex
+            items-center
+            gap-2
+            bg-[#f6f6f6]
+            rounded-[8px]
+            h-[47px]
+            w-[180px]
+            px-4
+            ml-5
+          ">
+            <SearchIcon
+              sx={{
+                color: '#777',
+                fontSize: 21
+              }}
+            />
 
-            <span className="text-[16px]">
+            <span className="text-[#777]">
               Search
             </span>
           </div>
 
-          <div className="flex items-center gap-5">
+          <button className="
+            hidden lg:flex
+            items-center
+            gap-1
+            ml-auto
+            text-[14px]
+          ">
+            English (united States)
 
-            {/* LANGUAGE */}
-            <button className="hidden lg:flex items-center gap-2 text-[16px]">
-              <span>English (united States)</span>
-              <KeyboardArrowDownIcon sx={{ fontSize: 18 }} />
-            </button>
+            <KeyboardArrowDownIcon
+              sx={{ fontSize: 18 }}
+            />
+          </button>
 
-            {/* LOGIN */}
+          <div className="
+            flex
+            items-center
+            gap-3
+            ml-auto
+            lg:ml-5
+          ">
+
             <Link
               to="/signin"
-              className={`hidden sm:flex items-center justify-center w-[140px] h-[48px] rounded-[8px] border border-[#333] text-[16px] transition-all duration-300
+              className={`
+                w-[120px]
+                lg:w-[139px]
+                h-[47px]
+                rounded-[8px]
+                border
+                flex
+                items-center
+                justify-center
+                transition-all
+                duration-300
                 ${
-                  location.pathname === "/signin"
-                    ? "bg-[#8d32ff] text-white border-[#8d32ff]"
-                    : "text-[#8d32ff] hover:bg-[#8d32ff] hover:text-white"
+                  activePage === 'signin'
+                    ? 'bg-[#8B32F5] text-white border-[#8B32F5]'
+                    : 'border-[#333] text-[#8B32F5] hover:bg-[#8B32F5] hover:text-white'
                 }
               `}
             >
               Login
             </Link>
 
-            {/* SIGN UP */}
             <Link
               to="/signup"
-              className={`hidden sm:flex items-center justify-center w-[155px] h-[48px] rounded-[8px] border text-[16px] transition-all duration-300
+              className={`
+                w-[120px]
+                lg:w-[139px]
+                h-[47px]
+                rounded-[8px]
+                border
+                flex
+                items-center
+                justify-center
+                transition-all
+                duration-300
                 ${
-                  location.pathname === "/signup"
-                    ? "bg-[#8d32ff] text-white border-[#8d32ff]"
-                    : "border-[#333] text-[#8d32ff] hover:bg-[#8d32ff] hover:text-white"
+                  activePage === 'signup'
+                    ? 'bg-[#8B32F5] text-white border-[#8B32F5]'
+                    : 'border-[#333] text-[#8B32F5] hover:bg-[#8B32F5] hover:text-white'
                 }
               `}
             >
@@ -90,35 +144,69 @@ export default function AuthLayout({ children }) {
 
           </div>
         </div>
-      </header>
+      </motion.header>
 
-      {/* CONTENT */}
-      <main className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-110px)]">
+      <main className="
+        min-h-[calc(100vh-109px)]
+        flex
+        flex-col
+        lg:flex-row
+      ">
 
-        {/* IMAGE */}
         <motion.div
-          key={image}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="hidden lg:block relative overflow-hidden"
+          initial={{
+            opacity: 0,
+            x: -40
+          }}
+          animate={{
+            opacity: 1,
+            x: 0
+          }}
+          transition={{
+            duration: 0.7
+          }}
+          className="
+            hidden
+            lg:block
+            w-1/2
+            min-h-[calc(100vh-109px)]
+          "
         >
           <img
             src={image}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            className="
+              w-full
+              h-full
+              object-cover
+            "
           />
         </motion.div>
 
-        {/* FORM */}
         <motion.div
-          key={location.pathname}
-          initial={{ opacity: 0, x: 25 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.45 }}
-          className="flex justify-center px-6 sm:px-10 lg:px-16 xl:px-20 py-12 lg:py-14"
+          initial={{
+            opacity: 0,
+            x: 40
+          }}
+          animate={{
+            opacity: 1,
+            x: 0
+          }}
+          transition={{
+            duration: 0.7
+          }}
+          className="
+            w-full
+            lg:w-1/2
+            px-6
+            sm:px-10
+            md:px-16
+            lg:px-[5.5%]
+            py-12
+            lg:py-14
+          "
         >
-          <div className="w-full max-w-[565px]">
+          <div className="max-w-[565px]">
             {children}
           </div>
         </motion.div>

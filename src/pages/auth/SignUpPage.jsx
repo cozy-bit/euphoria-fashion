@@ -1,246 +1,299 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import GoogleIcon from "@mui/icons-material/Google";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-import AuthLayout from "./AuthLayout";
-import { registerUser } from "../../utils/authStorage";
+import AuthLayout from './AuthLayout';
+import { useAuth } from '../../context/AuthContext';
+
+import signupImage from '../../assets/images/kibriyo/auth/2-sign-up-banner.webp';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
+  const { register } = useAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
 
   const [agree, setAgree] = useState(true);
-  const [newsletter, setNewsletter] = useState(true);
 
-  const [errors, setErrors] = useState({});
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const validate = () => {
-    const newErrors = {};
+  const handlePhone = (e) => {
+    const numbers = e.target.value
+      .replace(/\D/g, '')
+      .slice(0, 9);
 
-    if (!email.trim()) {
-      newErrors.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Please enter a valid email address.";
-    }
-
-    if (!password) {
-      newErrors.password = "Password is required.";
-    } else if (password.length < 8) {
-      newErrors.password =
-        "Use 8 or more characters with a mix of letters, numbers & symbols";
-    }
-
-    if (!agree) {
-      newErrors.agree = "Please accept Terms of use.";
-    }
-
-    setErrors(newErrors);
-
-    return Object.keys(newErrors).length === 0;
+    setPhone(numbers);
+    setError('');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validate()) return;
+    setError('');
 
-    const result = registerUser(email, password);
-
-    if (!result.success) {
-      setErrors({
-        email: result.message,
-      });
-
+    if (!agree) {
+      setError(
+        'Please agree to the Terms of use and Privacy Policy.'
+      );
       return;
     }
 
-    // После регистрации сразу на главную
-    navigate("/");
+    if (phone.length !== 9) {
+      setError(
+        'Please enter a valid phone number.'
+      );
+      return;
+    }
+
+    if (password.length < 8) {
+      setError(
+        'Password must contain at least 8 characters.'
+      );
+      return;
+    }
+
+    setLoading(true);
+
+    setTimeout(() => {
+      const result = register(
+        `+992${phone}`,
+        password
+      );
+
+      if (!result.success) {
+        setError(result.message);
+        setLoading(false);
+        return;
+      }
+
+      navigate('/', {
+        replace: true
+      });
+    }, 600);
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout
+      image={signupImage}
+      activePage="signup"
+    >
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{
+          opacity: 0,
+          y: 25
+        }}
+        animate={{
+          opacity: 1,
+          y: 0
+        }}
       >
 
-        <h1 className="text-[38px] sm:text-[42px] font-semibold leading-tight mb-2">
+        <h1 className="
+          text-[34px]
+          sm:text-[38px]
+          font-semibold
+          text-[#333]
+        ">
           Sign Up
         </h1>
 
-        <p className="text-[#777] text-[16px] mb-11">
+        <p className="
+          mt-2
+          text-[#888]
+        ">
           Sign up for free to access to in any of our products
         </p>
 
-        {/* GOOGLE */}
-        <button
-          type="button"
-          className="w-full h-[62px] border border-[#555] rounded-[8px] flex items-center justify-center gap-4 text-[#8d32ff] text-[19px] hover:border-[#8d32ff] transition"
-        >
-          <GoogleIcon sx={{ color: "#4285F4" }} />
-          Continue With Google
-        </button>
-
-        {/* TWITTER */}
-        <button
-          type="button"
-          className="w-full h-[62px] border border-[#555] rounded-[8px] flex items-center justify-center gap-4 text-[#8d32ff] text-[19px] mt-4 hover:border-[#8d32ff] transition"
-        >
-          <span className="text-[#42a5df] font-bold">
-            ♥
-          </span>
-          Continue With Twitter
-        </button>
-
         <form
           onSubmit={handleSubmit}
-          className="mt-10"
+          className="mt-12"
         >
 
-          {/* EMAIL */}
-          <label className="block text-[17px] mb-3">
-            Email Address
+          <label className="block mb-3">
+            Phone Number
           </label>
 
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
+          <div className="
+            h-[62px]
+            border
+            border-[#777]
+            rounded-[8px]
+            flex
+            items-center
+            px-5
+            focus-within:border-[#8B32F5]
+            focus-within:ring-1
+            focus-within:ring-[#8B32F5]
+          ">
 
-              setErrors((prev) => ({
-                ...prev,
-                email: "",
-              }));
-            }}
-            placeholder="designer@gmail.com"
-            className={`w-full h-[54px] rounded-[8px] border px-5 outline-none text-[16px] transition
-              ${
-                errors.email
-                  ? "border-[#ff3860]"
-                  : "border-[#555] focus:border-[#8d32ff]"
-              }
-            `}
-          />
-
-          {errors.email && (
-            <p className="text-[#ff3860] text-[14px] mt-2">
-              {errors.email}
-            </p>
-          )}
-
-          {/* PASSWORD */}
-          <div className="mt-8">
-
-            <div className="flex justify-between items-center mb-3">
-              <label className="text-[17px]">
-                Password
-              </label>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setShowPassword(!showPassword)
-                }
-                className="flex items-center gap-2 text-[#777]"
-              >
-                {showPassword ? (
-                  <VisibilityOffIcon sx={{ fontSize: 19 }} />
-                ) : (
-                  <VisibilityIcon sx={{ fontSize: 19 }} />
-                )}
-
-                {showPassword ? "Hide" : "Show"}
-              </button>
-            </div>
+            <span className="text-[#555] mr-2">
+              +992
+            </span>
 
             <input
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-
-                setErrors((prev) => ({
-                  ...prev,
-                  password: "",
-                }));
-              }}
-              className={`w-full h-[54px] rounded-[8px] border px-5 outline-none text-[16px]
-                ${
-                  errors.password
-                    ? "border-[#ff3860]"
-                    : "border-[#555] focus:border-[#8d32ff]"
-                }
-              `}
+              type="tel"
+              value={phone}
+              onChange={handlePhone}
+              placeholder="90 123 45 67"
+              className="
+                flex-1
+                outline-none
+                bg-transparent
+              "
             />
-
-            {errors.password ? (
-              <p className="text-[#777] text-[14px] mt-2">
-                {errors.password}
-              </p>
-            ) : (
-              <p className="text-[#777] text-[14px] mt-2">
-                Use 8 or more characters with a mix of letters, numbers & symbols
-              </p>
-            )}
 
           </div>
 
-          {/* TERMS */}
-          <label className="flex items-center gap-3 mt-8 cursor-pointer text-[#777]">
+          <label className="
+            block
+            mt-8
+            mb-3
+          ">
+            Password
+          </label>
+
+          <div className="
+            h-[62px]
+            border
+            border-[#777]
+            rounded-[8px]
+            flex
+            items-center
+            px-5
+            focus-within:border-[#8B32F5]
+          ">
+
+            <input
+              type={
+                showPassword
+                  ? 'text'
+                  : 'password'
+              }
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError('');
+              }}
+              className="
+                flex-1
+                outline-none
+                bg-transparent
+              "
+            />
+
+            <button
+              type="button"
+              onClick={() =>
+                setShowPassword(
+                  !showPassword
+                )
+              }
+              className="text-[#888]"
+            >
+              {showPassword
+                ? <VisibilityIcon />
+                : <VisibilityOffIcon />
+              }
+            </button>
+
+          </div>
+
+          <p className="
+            text-[14px]
+            text-[#888]
+            mt-3
+          ">
+            Use 8 or more characters with a mix of
+            letters, numbers & symbols
+          </p>
+
+          <label className="
+            flex
+            gap-3
+            items-start
+            mt-7
+            text-[#777]
+            cursor-pointer
+          ">
             <input
               type="checkbox"
               checked={agree}
               onChange={(e) =>
                 setAgree(e.target.checked)
               }
-              className="w-[18px] h-[18px] accent-[#555]"
+              className="
+                w-[18px]
+                h-[18px]
+                mt-1
+                accent-[#555]
+              "
             />
 
             <span>
-              Agree to our{" "}
-              <u>Terms of use</u> and{" "}
-              <u>Privacy Policy</u>
+              Agree to our{' '}
+              <span className="underline">
+                Terms of use
+              </span>{' '}
+              and{' '}
+              <span className="underline">
+                Privacy Policy
+              </span>
             </span>
           </label>
 
-          {/* NEWSLETTER */}
-          <label className="flex items-center gap-3 mt-5 cursor-pointer text-[#777]">
-            <input
-              type="checkbox"
-              checked={newsletter}
-              onChange={(e) =>
-                setNewsletter(e.target.checked)
-              }
-              className="w-[18px] h-[18px] accent-[#555]"
-            />
+          {error && (
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="
+                mt-5
+                text-[#e63962]
+                text-sm
+              "
+            >
+              {error}
+            </motion.p>
+          )}
 
-            <span>
-              Subscribe to our monthly newsletter
-            </span>
-          </label>
-
-          {/* BUTTON */}
-          <button
+          <motion.button
+            whileHover={{
+              scale: 1.02
+            }}
+            whileTap={{
+              scale: 0.98
+            }}
             type="submit"
-            className="mt-8 h-[54px] px-12 bg-[#8d32ff] text-white rounded-[7px] text-[17px] hover:bg-[#7620e5] transition"
+            disabled={loading}
+            className="
+              mt-7
+              w-[150px]
+              h-[55px]
+              rounded-[7px]
+              bg-[#8B32F5]
+              text-white
+              disabled:opacity-60
+            "
           >
-            Sign Up
-          </button>
+            {loading
+              ? 'Creating...'
+              : 'Sign Up'
+            }
+          </motion.button>
 
-          {/* LOGIN */}
-          <p className="text-[#777] mt-3">
-            Already have an account?{" "}
+          <p className="
+            mt-4
+            text-[#777]
+          ">
+            Already have an account?{' '}
+
             <Link
               to="/signin"
               className="underline text-[#555]"
@@ -250,7 +303,9 @@ export default function SignUpPage() {
           </p>
 
         </form>
+
       </motion.div>
+
     </AuthLayout>
   );
 }

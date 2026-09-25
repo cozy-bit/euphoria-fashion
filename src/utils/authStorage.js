@@ -1,43 +1,45 @@
 const USERS_KEY = "users";
 const CURRENT_USER_KEY = "currentUser";
+const RESET_PHONE_KEY = "resetPhone";
+
+// ==================== USERS ====================
 
 export const getUsers = () => {
-  return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+  try {
+    return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+  } catch {
+    return [];
+  }
 };
 
-export const registerUser = (email, password) => {
+export const saveUsers = (users) => {
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+};
+
+// ==================== REGISTER ====================
+
+export const registerUser = (phone) => {
   const users = getUsers();
 
-  const normalizedEmail = email.trim().toLowerCase();
+  const exists = users.some((user) => user.phone === phone);
 
-  const existingUser = users.find(
-    (user) => user.email === normalizedEmail
-  );
-
-  if (existingUser) {
+  if (exists) {
     return {
       success: false,
-      message: "This email is already registered.",
+      message: "This phone number is already registered.",
     };
   }
 
   const newUser = {
     id: Date.now(),
-    email: normalizedEmail,
-    password,
+    phone,
   };
 
   users.push(newUser);
 
-  localStorage.setItem(
-    USERS_KEY,
-    JSON.stringify(users)
-  );
+  saveUsers(users);
 
-  localStorage.setItem(
-    CURRENT_USER_KEY,
-    JSON.stringify(newUser)
-  );
+  localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(newUser));
 
   return {
     success: true,
@@ -45,28 +47,21 @@ export const registerUser = (email, password) => {
   };
 };
 
-export const loginUser = (email, password) => {
+// ==================== LOGIN ====================
+
+export const loginUser = (phone) => {
   const users = getUsers();
 
-  const normalizedEmail = email.trim().toLowerCase();
-
-  const user = users.find(
-    (item) =>
-      item.email === normalizedEmail &&
-      item.password === password
-  );
+  const user = users.find((item) => item.phone === phone);
 
   if (!user) {
     return {
       success: false,
-      message: "Incorrect email or password.",
+      message: "This phone number is not registered.",
     };
   }
 
-  localStorage.setItem(
-    CURRENT_USER_KEY,
-    JSON.stringify(user)
-  );
+  localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
 
   return {
     success: true,
@@ -74,12 +69,30 @@ export const loginUser = (email, password) => {
   };
 };
 
+// ==================== CURRENT USER ====================
+
 export const getCurrentUser = () => {
-  return JSON.parse(
-    localStorage.getItem(CURRENT_USER_KEY) || "null"
-  );
+  try {
+    return JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || "null");
+  } catch {
+    return null;
+  }
 };
 
 export const logoutUser = () => {
   localStorage.removeItem(CURRENT_USER_KEY);
+};
+
+// ==================== RESET ====================
+
+export const getResetPhone = () => {
+  return localStorage.getItem(RESET_PHONE_KEY);
+};
+
+export const setResetPhone = (phone) => {
+  localStorage.setItem(RESET_PHONE_KEY, phone);
+};
+
+export const clearResetPhone = () => {
+  localStorage.removeItem(RESET_PHONE_KEY);
 };

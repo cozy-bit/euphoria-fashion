@@ -1,147 +1,244 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "framer-motion";
 
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import GoogleIcon from "@mui/icons-material/Google";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-import AuthLayout from "./AuthLayout";
-import { loginUser } from "../../utils/authStorage";
+import AuthLayout from './AuthLayout';
+import { useAuth } from '../../context/AuthContext';
+
+import signinImage from '../../assets/images/kibriyo/auth/1-sign-in-banner.webp';
 
 export default function SignInPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
+
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setError("");
+    setError('');
 
-    if (!email || !password) {
-      setError("Please enter your email and password.");
+    if (phone.length !== 9) {
+      setError(
+        'Please enter a valid phone number.'
+      );
       return;
     }
 
-    const result = loginUser(email, password);
-
-    if (!result.success) {
-      setError(result.message);
+    if (!password) {
+      setError('Please enter your password.');
       return;
     }
 
-    navigate("/");
+    setLoading(true);
+
+    setTimeout(() => {
+      const result = login(
+        `+992${phone}`,
+        password
+      );
+
+      if (!result.success) {
+        setError(result.message);
+        setLoading(false);
+        return;
+      }
+
+      navigate('/', {
+        replace: true
+      });
+    }, 600);
   };
 
   return (
-    <AuthLayout>
+    <AuthLayout
+      image={signinImage}
+      activePage="signin"
+    >
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{
+          opacity: 0,
+          y: 25
+        }}
+        animate={{
+          opacity: 1,
+          y: 0
+        }}
       >
 
-        <h1 className="text-[38px] sm:text-[42px] font-semibold mb-11">
-          Sign In Page
+        <h1 className="
+          text-[34px]
+          sm:text-[38px]
+          font-semibold
+        ">
+          Sign In
         </h1>
 
-        <button
-          type="button"
-          className="w-full h-[62px] border border-[#555] rounded-[8px] flex items-center justify-center gap-4 text-[#8d32ff] text-[19px]"
-        >
-          <GoogleIcon sx={{ color: "#4285F4" }} />
-          Continue With Google
-        </button>
+        <p className="
+          mt-2
+          text-[#888]
+        ">
+          Welcome back! Please enter your details.
+        </p>
 
-        <button
-          type="button"
-          className="w-full h-[62px] border border-[#555] rounded-[8px] flex items-center justify-center gap-4 text-[#8d32ff] text-[19px] mt-4"
-        >
-          <span className="text-[#42a5df] font-bold">
-            ♥
-          </span>
-          Continue With Twitter
-        </button>
-
-        <div className="flex items-center gap-5 my-12">
-          <div className="h-[1px] bg-[#ddd] flex-1" />
-          <span className="text-[#777]">OR</span>
-          <div className="h-[1px] bg-[#ddd] flex-1" />
-        </div>
-
-        <form onSubmit={handleSubmit}>
+        <form className="mt-12" onSubmit={handleSubmit}>
 
           <label className="block mb-3">
-            User name or email address
+            Phone Number
           </label>
 
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full h-[58px] border border-[#555] rounded-[8px] px-5 outline-none focus:border-[#8d32ff]"
-          />
+          <div className="
+            h-[62px]
+            border
+            border-[#777]
+            rounded-[8px]
+            flex
+            items-center
+            px-5
+            focus-within:border-[#8B32F5]
+          ">
 
-          <div className="mt-8">
-
-            <div className="flex justify-between mb-3">
-              <label>Password</label>
-
-              <button
-                type="button"
-                onClick={() =>
-                  setShowPassword(!showPassword)
-                }
-                className="flex items-center gap-2 text-[#777]"
-              >
-                {showPassword ? (
-                  <VisibilityOffIcon sx={{ fontSize: 19 }} />
-                ) : (
-                  <VisibilityIcon sx={{ fontSize: 19 }} />
-                )}
-
-                {showPassword ? "Hide" : "Show"}
-              </button>
-            </div>
+            <span className="mr-2">
+              +992
+            </span>
 
             <input
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-[58px] border border-[#555] rounded-[8px] px-5 outline-none focus:border-[#8d32ff]"
+              type="tel"
+              value={phone}
+              onChange={(e) => {
+                setPhone(
+                  e.target.value
+                    .replace(/\D/g, '')
+                    .slice(0, 9)
+                );
+                setError('');
+              }}
+              placeholder="90 123 45 67"
+              className="
+                flex-1
+                outline-none
+                bg-transparent
+              "
             />
 
           </div>
 
-          <div className="flex justify-end mt-4">
+          <label className="
+            block
+            mt-8
+            mb-3
+          ">
+            Password
+          </label>
+
+          <div className="
+            h-[62px]
+            border
+            border-[#777]
+            rounded-[8px]
+            flex
+            items-center
+            px-5
+          ">
+
+            <input
+              type={
+                showPassword
+                  ? 'text'
+                  : 'password'
+              }
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError('');
+              }}
+              className="
+                flex-1
+                outline-none
+                bg-transparent
+              "
+            />
+
+            <button
+              type="button"
+              onClick={() =>
+                setShowPassword(
+                  !showPassword
+                )
+              }
+              className="text-[#888]"
+            >
+              {showPassword
+                ? <VisibilityIcon />
+                : <VisibilityOffIcon />
+              }
+            </button>
+
+          </div>
+
+          <div className="text-right mt-4">
             <Link
               to="/reset-password"
-              className="underline text-[#555]"
+              className="underline"
             >
               Forget your password
             </Link>
           </div>
 
           {error && (
-            <p className="text-[#ff3860] mt-4">
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="
+                mt-5
+                text-[#e63962]
+                text-sm
+              "
+            >
               {error}
-            </p>
+            </motion.p>
           )}
 
-          <button
-            type="submit"
-            className="mt-7 h-[54px] px-12 bg-[#8d32ff] text-white rounded-[7px] text-[17px]"
+          <motion.button
+            whileHover={{
+              scale: 1.02
+            }}
+            whileTap={{
+              scale: 0.98
+            }}
+            disabled={loading}
+            className="
+              mt-7
+              w-[150px]
+              h-[55px]
+              bg-[#8B32F5]
+              text-white
+              rounded-[7px]
+              disabled:opacity-60
+            "
           >
-            Sign In
-          </button>
+            {loading
+              ? 'Signing...'
+              : 'Sign In'
+            }
+          </motion.button>
 
-          <p className="mt-3 text-[#777]">
-            Don’t have an account?{" "}
+          <p className="
+            mt-4
+            text-[#777]
+          ">
+            Don’t have an account?{' '}
+
             <Link
               to="/signup"
               className="underline text-[#555]"
@@ -151,7 +248,9 @@ export default function SignInPage() {
           </p>
 
         </form>
+
       </motion.div>
+
     </AuthLayout>
   );
 }
