@@ -26,7 +26,6 @@ import catMenBluePolo from '../../assets/images/amirkhon/home/cat-men-blue-polo.
 import catMenBlackTee from '../../assets/images/amirkhon/home/cat-men-black-tee.webp';
 import catMenChecks from '../../assets/images/amirkhon/home/cat-men-checks.webp';
 import catMenDenimShirt from '../../assets/images/amirkhon/home/cat-men-denim-shirt.webp';
-import catMenUrbanJacket from '../../assets/images/amirkhon/home/cat-men-urban-jacket.webp';
 
 import catWomenRedCoat from '../../assets/images/amirkhon/home/cat-women-red-coat.webp';
 import catWomenRainbowDress from '../../assets/images/amirkhon/home/cat-women-rainbow-dress.webp';
@@ -53,7 +52,7 @@ import avatar1 from '../../assets/images/amirkhon/home/feedback-avatar-1.webp';
 import avatar2 from '../../assets/images/amirkhon/home/feedback-avatar-2.webp';
 import avatar3 from '../../assets/images/amirkhon/home/feedback-avatar-3.webp';
 
-// 1. HERO SLIDES DATA
+// 1. HERO SLIDES DATA - Original authentic Summer Value Pack banner from Figma
 const HERO_SLIDES = [
   {
     id: 1,
@@ -65,28 +64,6 @@ const HERO_SLIDES = [
     imageAlt: 'Summer Value Pack Model',
     link: '/products?cat=women',
     btnText: 'Shop Now'
-  },
-  {
-    id: 2,
-    subTitle: "Men's Streetwear",
-    title: 'Urban Street Style',
-    description: 'minimal / bold / durable',
-    bgColor: '#5C2D5C',
-    image: catMenUrbanJacket,
-    imageAlt: 'Urban Street Style Model',
-    link: '/products?cat=men',
-    btnText: 'Explore Men'
-  },
-  {
-    id: 3,
-    subTitle: 'Multipacks & Combos',
-    title: 'Breezy Summer Deals',
-    description: 'breathable / lightweight / vibrant',
-    bgColor: '#F9A03F',
-    image: catWomenYellowPolka,
-    imageAlt: 'Breezy Summer Deals Model',
-    link: '/products?cat=combos',
-    btnText: 'Discover Combos'
   }
 ];
 
@@ -159,7 +136,7 @@ export default function HomePage() {
 
   // Auto-advance Hero every 5.5 seconds, resetting cleanly on slide change
   useEffect(() => {
-    if (isHeroPaused) return;
+    if (isHeroPaused || HERO_SLIDES.length <= 1) return;
     const timer = setTimeout(() => {
       setHeroDirection(1);
       setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
@@ -230,25 +207,29 @@ export default function HomePage() {
         className="relative overflow-hidden w-full h-[calc(100vh-80px)] min-h-[580px] max-h-[920px] flex items-center transition-colors duration-700 select-none"
         style={{ backgroundColor: currentHero.bgColor }}
       >
-        {/* Left Slide Arrow - Vertically centered and fixed */}
-        <button
-          type="button"
-          onClick={handleHeroPrev}
-          aria-label="Previous Slide"
-          className="absolute left-3 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/15 hover:bg-black/30 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-md"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
+        {/* Left Slide Arrow - Vertically centered and fixed (when multiple slides) */}
+        {HERO_SLIDES.length > 1 && (
+          <button
+            type="button"
+            onClick={handleHeroPrev}
+            aria-label="Previous Slide"
+            className="absolute left-3 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/15 hover:bg-black/30 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-md"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+        )}
 
-        {/* Right Slide Arrow - Vertically centered and fixed */}
-        <button
-          type="button"
-          onClick={handleHeroNext}
-          aria-label="Next Slide"
-          className="absolute right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/15 hover:bg-black/30 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-md"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
+        {/* Right Slide Arrow - Vertically centered and fixed (when multiple slides) */}
+        {HERO_SLIDES.length > 1 && (
+          <button
+            type="button"
+            onClick={handleHeroNext}
+            aria-label="Next Slide"
+            className="absolute right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/15 hover:bg-black/30 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-md"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        )}
 
         {/* Slide Content with AnimatePresence */}
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full h-full flex items-center py-8">
@@ -300,26 +281,33 @@ export default function HomePage() {
 
         {/* Bottom Pagination Indicators - Stable, no layout shift or jump */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-30">
-          {HERO_SLIDES.map((slide, idx) => {
-            const isActive = heroIndex === idx;
-            return (
-              <button
-                key={slide.id}
-                type="button"
-                onClick={() => handleHeroDotClick(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-                className="p-1 cursor-pointer flex items-center justify-center"
-              >
-                <span
-                  className={`block h-1.5 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? 'w-10 bg-white shadow-md'
-                      : 'w-3 bg-white/40 hover:bg-white/75'
-                  }`}
-                />
-              </button>
-            );
-          })}
+          {HERO_SLIDES.length > 1 ? (
+            HERO_SLIDES.map((slide, idx) => {
+              const isActive = heroIndex === idx;
+              return (
+                <button
+                  key={slide.id}
+                  type="button"
+                  onClick={() => handleHeroDotClick(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className="p-1 cursor-pointer flex items-center justify-center"
+                >
+                  <span
+                    className={`block h-1.5 rounded-full transition-all duration-300 ${
+                      isActive
+                        ? 'w-10 bg-white shadow-md'
+                        : 'w-3 bg-white/40 hover:bg-white/75'
+                    }`}
+                  />
+                </button>
+              );
+            })
+          ) : (
+            <>
+              <span className="block h-1.5 w-10 bg-white rounded-full shadow-md" />
+              <span className="block h-1.5 w-3 bg-white/40 rounded-full" />
+            </>
+          )}
         </div>
       </section>
 
