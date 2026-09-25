@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 temp_raw_images
+.vercel
 
 # Editor directories and files
 .vscode/*
