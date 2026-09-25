@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
@@ -13,8 +13,17 @@ export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const searchParams = new URLSearchParams(location.search);
   const currentCat = searchParams.get('cat');
@@ -46,9 +55,19 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#BEBCBD]/30 shadow-xs">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ease-in-out ${
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-xl border-b border-black/5 shadow-md shadow-black/5 py-0.5'
+          : 'bg-white/95 backdrop-blur-md border-b border-[#BEBCBD]/30 shadow-xs py-0'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div
+          className={`flex items-center justify-between gap-4 transition-all duration-300 ${
+            isScrolled ? 'h-16' : 'h-20'
+          }`}
+        >
           
           {/* Mobile menu button */}
           <button
