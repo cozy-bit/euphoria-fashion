@@ -60,8 +60,6 @@ const HERO_SLIDES = [
     title: 'Summer Value Pack',
     description: 'cool / colorful / comfy',
     bgColor: '#00AEEF',
-    bgGradient: 'from-[#0284C7] via-[#00AEEF] to-[#0369A1]',
-    glowColor: 'bg-cyan-200/25',
     image: heroSummerPack,
     imageAlt: 'Summer Value Pack Model',
     link: '/products?cat=women',
@@ -73,8 +71,6 @@ const HERO_SLIDES = [
     title: 'Breezy Summer Deals',
     description: 'breathable / lightweight / vibrant',
     bgColor: '#F9A03F',
-    bgGradient: 'from-[#C2410C] via-[#EA580C] to-[#D97706]',
-    glowColor: 'bg-amber-200/25',
     image: catWomenYellowPolka,
     imageAlt: 'Breezy Summer Deals Model',
     link: '/products?cat=combos',
@@ -215,23 +211,13 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20 overflow-hidden">
       
-      {/* 1. HERO BANNER WITH 100% HEIGHT & STUDIO COLOR GRADING */}
+      {/* 1. HERO SLIDER BANNER WITH 100% HEIGHT */}
       <section
         onMouseEnter={() => setIsHeroPaused(true)}
         onMouseLeave={() => setIsHeroPaused(false)}
-        className={`relative overflow-hidden w-full h-[calc(100vh-80px)] min-h-[580px] max-h-[920px] flex items-center select-none bg-gradient-to-br ${currentHero.bgGradient || 'from-[#0284C7] via-[#00AEEF] to-[#0369A1]'} transition-all duration-700`}
+        className="relative overflow-hidden w-full h-[calc(100vh-80px)] min-h-[580px] max-h-[920px] flex items-center transition-colors duration-700 select-none"
         style={{ backgroundColor: currentHero.bgColor }}
       >
-        {/* Ambient Studio Lighting Glows for Depth & Color Grading */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Spotlight behind model */}
-          <div className="absolute right-[8%] top-1/2 -translate-y-1/2 w-[580px] h-[580px] rounded-full bg-white/20 blur-3xl" />
-          {/* Soft ambient bloom matching slide tone */}
-          <div className={`absolute left-[5%] top-[12%] w-[400px] h-[400px] rounded-full ${currentHero.glowColor || 'bg-cyan-200/25'} blur-3xl transition-all duration-700`} />
-          {/* Subtle bottom vignette */}
-          <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/10 to-transparent" />
-        </div>
-
         {/* Left Slide Arrow - Vertically centered and fixed (when multiple slides) */}
         {HERO_SLIDES.length > 1 && (
           <button
@@ -257,7 +243,7 @@ export default function HomePage() {
         )}
 
         {/* Slide Content with AnimatePresence */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full h-full flex items-center py-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full h-full flex items-center py-8">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={currentHero.id}
@@ -267,38 +253,37 @@ export default function HomePage() {
               transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full"
             >
-              {/* Left Texts with High-Contrast Typography & Frosted Badge */}
-              <div className="lg:col-span-6 flex flex-col items-start gap-5 z-10">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-white shadow-xs">
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-100" />
+              {/* Left Texts */}
+              <div className="lg:col-span-6 flex flex-col items-start gap-4 z-10">
+                <span className="text-base sm:text-lg md:text-xl font-semibold tracking-wide text-white/90">
                   {currentHero.subTitle}
                 </span>
 
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.06] text-white drop-shadow-sm">
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] text-white">
                   {currentHero.title.split(' ')[0]}<br />
                   {currentHero.title.split(' ').slice(1).join(' ')}
                 </h1>
 
-                <p className="text-base sm:text-xl text-white/95 font-medium tracking-wide max-w-lg leading-relaxed drop-shadow-xs">
+                <p className="text-base sm:text-xl text-white/90 font-medium">
                   {currentHero.description}
                 </p>
 
-                <div className="pt-3">
+                <div className="pt-4">
                   <Link
                     to={currentHero.link}
-                    className="inline-block px-10 py-4 bg-white text-[#1E293B] font-extrabold rounded-2xl text-base hover:bg-slate-50 transition-all shadow-xl shadow-cyan-950/20 hover:shadow-2xl hover:scale-105 active:scale-95"
+                    className="inline-block px-9 py-3.5 bg-white text-[#3C4242] font-extrabold rounded-xl text-sm sm:text-base hover:bg-neutral-100 transition-all shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95"
                   >
                     {currentHero.btnText}
                   </Link>
                 </div>
               </div>
 
-              {/* Right Model Image - Cutout with Studio Depth & Drop Shadow */}
+              {/* Right Model Image - STATIC (no floating bounce) */}
               <div className="lg:col-span-6 relative flex justify-center items-end h-full">
                 <img
                   src={currentHero.image}
                   alt={currentHero.imageAlt}
-                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[calc(100vh-160px)] max-h-[580px] object-contain object-bottom drop-shadow-[0_20px_45px_rgba(0,0,0,0.22)] filter"
+                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[calc(100vh-160px)] max-h-[580px] object-contain object-bottom drop-shadow-2xl"
                 />
               </div>
             </motion.div>
