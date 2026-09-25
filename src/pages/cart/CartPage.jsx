@@ -12,7 +12,8 @@ export default function CartPage() {
     removeFromCart,
     updateQuantity,
     applyCoupon,
-    appliedCoupon
+    appliedCoupon,
+    clearCart
   } = useCart();
 
   const [couponInput, setCouponInput] = useState('');
@@ -54,6 +55,29 @@ export default function CartPage() {
             </Link>
           </p>
         </div>
+      </div>
+
+      {/* Action Header: Item count & Clear All Button */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="w-1.5 h-7 rounded-full bg-[#8A33FD]" />
+          <h2 className="text-xl sm:text-2xl font-bold text-[#3C4242]">
+            Shopping Bag
+          </h2>
+          <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#8A33FD]/10 text-[#8A33FD]">
+            {cartItems.length} {cartItems.length === 1 ? 'item' : 'items'}
+          </span>
+        </div>
+
+        <button
+          type="button"
+          onClick={clearCart}
+          className="flex items-center gap-2 py-2 px-4 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 text-xs sm:text-sm font-bold transition-all cursor-pointer active:scale-95 shadow-2xs"
+          title="Clear all items from cart"
+        >
+          <Trash2 className="w-4 h-4" />
+          <span>Clear All</span>
+        </button>
       </div>
 
       {/* 2. CART TABLE */}
@@ -188,14 +212,22 @@ export default function CartPage() {
             </p>
           )}
 
-          {/* Continue Shopping Button */}
-          <div className="pt-2">
+          {/* Action buttons: Continue Shopping + Clear All */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <Link
               to="/products"
-              className="inline-block py-2.5 px-7 border border-[#3C4242] rounded-xl text-sm font-bold text-[#3C4242] hover:bg-[#F6F6F6] transition-colors"
+              className="py-2.5 px-6 border border-[#3C4242] rounded-xl text-sm font-bold text-[#3C4242] hover:bg-[#F6F6F6] transition-colors"
             >
               Continue Shopping
             </Link>
+            <button
+              type="button"
+              onClick={clearCart}
+              className="py-2.5 px-6 border border-red-200 rounded-xl text-sm font-bold text-red-600 hover:bg-red-50 transition-colors flex items-center gap-2 cursor-pointer active:scale-95"
+            >
+              <Trash2 className="w-4 h-4" />
+              <span>Clear All</span>
+            </button>
           </div>
         </div>
 
