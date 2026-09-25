@@ -157,15 +157,15 @@ export default function HomePage() {
   const [heroDirection, setHeroDirection] = useState(1);
   const [isHeroPaused, setIsHeroPaused] = useState(false);
 
-  // Auto-advance Hero every 5 seconds
+  // Auto-advance Hero every 5.5 seconds, resetting cleanly on slide change
   useEffect(() => {
     if (isHeroPaused) return;
-    const interval = setInterval(() => {
+    const timer = setTimeout(() => {
       setHeroDirection(1);
       setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [isHeroPaused]);
+    }, 5500);
+    return () => clearTimeout(timer);
+  }, [heroIndex, isHeroPaused]);
 
   const handleHeroPrev = () => {
     setHeroDirection(-1);
@@ -175,6 +175,12 @@ export default function HomePage() {
   const handleHeroNext = () => {
     setHeroDirection(1);
     setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const handleHeroDotClick = (targetIndex) => {
+    if (targetIndex === heroIndex) return;
+    setHeroDirection(targetIndex > heroIndex ? 1 : -1);
+    setHeroIndex(targetIndex);
   };
 
   // 2. New Arrivals Carousel State (slides by 1 or 2 items)
@@ -217,124 +223,100 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20 overflow-hidden">
       
-      {/* 1. HERO SLIDER BANNER WITH APPLE-GRADE TRANSITIONS */}
+      {/* 1. HERO SLIDER BANNER WITH 100% HEIGHT */}
       <section
         onMouseEnter={() => setIsHeroPaused(true)}
         onMouseLeave={() => setIsHeroPaused(false)}
-        className="relative overflow-hidden min-h-[480px] sm:min-h-[520px] md:min-h-[600px] flex items-center transition-colors duration-700"
+        className="relative overflow-hidden w-full h-[calc(100vh-80px)] min-h-[580px] max-h-[920px] flex items-center transition-colors duration-700 select-none"
         style={{ backgroundColor: currentHero.bgColor }}
       >
-        {/* Left Slide Arrow */}
+        {/* Left Slide Arrow - Vertically centered and fixed */}
         <button
+          type="button"
           onClick={handleHeroPrev}
           aria-label="Previous Slide"
-          className="absolute left-3 sm:left-6 md:left-8 z-30 w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-110 active:scale-95 shadow-md"
+          className="absolute left-3 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/15 hover:bg-black/30 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-md"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
 
-        {/* Right Slide Arrow */}
+        {/* Right Slide Arrow - Vertically centered and fixed */}
         <button
+          type="button"
           onClick={handleHeroNext}
           aria-label="Next Slide"
-          className="absolute right-3 sm:right-6 md:right-8 z-30 w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-110 active:scale-95 shadow-md"
+          className="absolute right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/15 hover:bg-black/30 backdrop-blur-md text-white flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95 shadow-md"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Slide Content with AnimatePresence */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full py-12">
-          <AnimatePresence mode="wait">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full h-full flex items-center py-8">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={currentHero.id}
-              initial={{ opacity: 0, x: heroDirection > 0 ? 60 : -60 }}
+              initial={{ opacity: 0, x: heroDirection > 0 ? 50 : -50 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: heroDirection > 0 ? -60 : 60 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 32 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              exit={{ opacity: 0, x: heroDirection > 0 ? -50 : 50 }}
+              transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full"
             >
               {/* Left Texts */}
               <div className="lg:col-span-6 flex flex-col items-start gap-4 z-10">
-                <motion.span
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.4 }}
-                  className="text-base sm:text-lg md:text-xl font-semibold tracking-wide text-white/90"
-                >
+                <span className="text-base sm:text-lg md:text-xl font-semibold tracking-wide text-white/90">
                   {currentHero.subTitle}
-                </motion.span>
+                </span>
 
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.45 }}
-                  className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] text-white"
-                >
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] text-white">
                   {currentHero.title.split(' ')[0]}<br />
                   {currentHero.title.split(' ').slice(1).join(' ')}
-                </motion.h1>
+                </h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.45 }}
-                  className="text-base sm:text-xl text-white/90 font-medium"
-                >
+                <p className="text-base sm:text-xl text-white/90 font-medium">
                   {currentHero.description}
-                </motion.p>
+                </p>
 
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4, type: 'spring' }}
-                  className="pt-4"
-                >
+                <div className="pt-4">
                   <Link
                     to={currentHero.link}
                     className="inline-block px-9 py-3.5 bg-white text-[#3C4242] font-extrabold rounded-xl text-sm sm:text-base hover:bg-neutral-100 transition-all shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95"
                   >
                     {currentHero.btnText}
                   </Link>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Right Model Image with Gentle Floating Animation */}
-              <div className="lg:col-span-6 relative flex justify-center items-end">
-                <motion.img
+              {/* Right Model Image - STATIC (no floating bounce) */}
+              <div className="lg:col-span-6 relative flex justify-center items-end h-full">
+                <img
                   src={currentHero.image}
                   alt={currentHero.imageAlt}
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
-                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[540px] object-contain drop-shadow-2xl"
+                  className="max-h-[380px] sm:max-h-[460px] md:max-h-[calc(100vh-160px)] max-h-[580px] object-contain object-bottom drop-shadow-2xl"
                 />
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Bottom Pagination Pill Indicators */}
-        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-30">
+        {/* Bottom Pagination Indicators - Stable, no layout shift or jump */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2.5 z-30">
           {HERO_SLIDES.map((slide, idx) => {
             const isActive = heroIndex === idx;
             return (
               <button
                 key={slide.id}
-                onClick={() => {
-                  setHeroDirection(idx > heroIndex ? 1 : -1);
-                  setHeroIndex(idx);
-                }}
+                type="button"
+                onClick={() => handleHeroDotClick(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className="relative py-2 px-1 cursor-pointer"
+                className="p-1 cursor-pointer flex items-center justify-center"
               >
-                {isActive ? (
-                  <motion.div
-                    layoutId="heroIndicatorPill"
-                    className="w-10 h-2 bg-white rounded-full shadow-md"
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                ) : (
-                  <div className="w-2.5 h-2 bg-white/40 hover:bg-white/70 rounded-full transition-colors" />
-                )}
+                <span
+                  className={`block h-1.5 rounded-full transition-all duration-300 ${
+                    isActive
+                      ? 'w-10 bg-white shadow-md'
+                      : 'w-3 bg-white/40 hover:bg-white/75'
+                  }`}
+                />
               </button>
             );
           })}
