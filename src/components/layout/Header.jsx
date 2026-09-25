@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, User, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -13,6 +13,21 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const currentCat = searchParams.get('cat');
+
+  const isLinkActive = (to) => {
+    if (to === '/products') {
+      return location.pathname === '/products' && !currentCat;
+    }
+    if (to.startsWith('/products?cat=')) {
+      const linkCat = to.split('=')[1];
+      return location.pathname === '/products' && currentCat === linkCat;
+    }
+    return location.pathname === to;
+  };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -22,11 +37,11 @@ export default function Header() {
   };
 
   const navLinks = [
-    { label: 'Shop', to: '/' },
+    { label: 'Shop', to: '/products' },
     { label: 'Men', to: '/products?cat=men' },
     { label: 'Women', to: '/products?cat=women' },
-    { label: 'Combos', to: '/products?cat=men' },
-    { label: 'Joggers', to: '/products?cat=men' }
+    { label: 'Combos', to: '/products?cat=combos' },
+    { label: 'Joggers', to: '/products?cat=joggers' }
   ];
 
   return (
@@ -53,21 +68,23 @@ export default function Header() {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.label}
-                to={link.to}
-                className={({ isActive }) =>
-                  `text-sm font-bold tracking-wide transition-colors ${
-                    isActive && link.to === '/'
-                      ? 'text-[#8A33FD]'
-                      : 'text-[#807D7E] hover:text-[#3C4242]'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.to);
+              return (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  className={`relative py-1 text-sm font-bold tracking-wide transition-colors ${
+                    active ? 'text-[#8A33FD]' : 'text-[#807D7E] hover:text-[#3C4242]'
+                  }`}
+                >
+                  {link.label}
+                  {active && (
+                    <span className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-[#8A33FD] rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Search Box */}
@@ -159,16 +176,23 @@ export default function Header() {
               />
             </form>
 
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.to}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-sm font-bold text-[#3C4242] py-2 px-2 rounded-lg hover:bg-[#F6F6F6] hover:text-[#8A33FD]"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isLinkActive(link.to);
+              return (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-sm font-bold py-2 px-3 rounded-lg transition-colors ${
+                    active
+                      ? 'bg-[#8A33FD]/10 text-[#8A33FD]'
+                      : 'text-[#3C4242] hover:bg-[#F6F6F6] hover:text-[#8A33FD]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
             <div className="pt-2 border-t border-[#F6F6F6] flex items-center gap-3">
               <Link
