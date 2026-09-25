@@ -953,69 +953,74 @@ export default function HomePage() {
           {/* Testimonial Prev/Next Buttons */}
           <div className="flex items-center gap-2">
             <button
+              type="button"
               onClick={() => setFeedbackPage((prev) => (prev > 0 ? prev - 1 : feedbackPagesCount - 1))}
               aria-label="Previous Testimonials"
-              className="w-9 h-9 rounded-full bg-white border border-[#E6E6E6] shadow-xs flex items-center justify-center text-[#3C4242] hover:bg-[#8A33FD] hover:text-white transition-all cursor-pointer active:scale-95"
+              className="w-10 h-10 rounded-full bg-white border border-[#E6E6E6] shadow-xs flex items-center justify-center text-[#3C4242] hover:bg-[#8A33FD] hover:text-white hover:border-[#8A33FD] transition-all cursor-pointer active:scale-95"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-5 h-5" />
             </button>
             <button
+              type="button"
               onClick={() => setFeedbackPage((prev) => (prev < feedbackPagesCount - 1 ? prev + 1 : 0))}
               aria-label="Next Testimonials"
-              className="w-9 h-9 rounded-full bg-white border border-[#E6E6E6] shadow-xs flex items-center justify-center text-[#3C4242] hover:bg-[#8A33FD] hover:text-white transition-all cursor-pointer active:scale-95"
+              className="w-10 h-10 rounded-full bg-white border border-[#E6E6E6] shadow-xs flex items-center justify-center text-[#3C4242] hover:bg-[#8A33FD] hover:text-white hover:border-[#8A33FD] transition-all cursor-pointer active:scale-95"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Testimonials Grid with Page Slide */}
-        <AnimatePresence mode="wait">
+        {/* Testimonials Horizontal Sliding Track */}
+        <div className="overflow-hidden py-3 -my-3">
           <motion.div
-            key={feedbackPage}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            animate={{ x: `-${feedbackPage * 100}%` }}
+            transition={{ type: 'spring', stiffness: 300, damping: 32 }}
+            className="flex w-full"
           >
-            {TESTIMONIALS.slice(feedbackPage * 3, feedbackPage * 3 + 3).map((item) => (
-              <motion.div
-                key={item.id}
-                whileHover={{ y: -6, transition: { type: 'spring', stiffness: 400, damping: 20 } }}
-                className="rounded-3xl border border-[#BEBCBD]/40 p-7 flex flex-col justify-between gap-5 bg-white shadow-xs hover:shadow-xl transition-all"
+            {Array.from({ length: feedbackPagesCount }).map((_, pageIdx) => (
+              <div
+                key={pageIdx}
+                className="w-full shrink-0 grid grid-cols-1 md:grid-cols-3 gap-6"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3.5">
-                    <img
-                      src={item.avatar}
-                      alt={item.name}
-                      className="w-12 h-12 rounded-full object-cover border border-[#E6E6E6]"
-                    />
-                    <div>
-                      <h4 className="text-base font-bold text-[#3C4242]">{item.name}</h4>
-                      <span className="text-[11px] text-emerald-600 font-semibold">Verified Buyer</span>
+                {TESTIMONIALS.slice(pageIdx * 3, pageIdx * 3 + 3).map((item) => (
+                  <div
+                    key={item.id}
+                    className="rounded-3xl border border-[#BEBCBD]/40 p-7 flex flex-col justify-between gap-5 bg-white shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3.5">
+                        <img
+                          src={item.avatar}
+                          alt={item.name}
+                          className="w-12 h-12 rounded-full object-cover border border-[#E6E6E6]"
+                        />
+                        <div>
+                          <h4 className="text-base font-bold text-[#3C4242]">{item.name}</h4>
+                          <span className="text-[11px] text-emerald-600 font-semibold">Verified Buyer</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center text-[#EDD146]">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-3.5 h-3.5 ${
+                              i < Math.floor(item.rating) ? 'fill-current' : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <div className="flex items-center text-[#EDD146]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-3.5 h-3.5 ${
-                          i < Math.floor(item.rating) ? 'fill-current' : 'text-gray-300'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
 
-                <p className="text-xs sm:text-sm text-[#807D7E] leading-relaxed italic">
-                  "{item.comment}"
-                </p>
-              </motion.div>
+                    <p className="text-xs sm:text-sm text-[#807D7E] leading-relaxed italic">
+                      "{item.comment}"
+                    </p>
+                  </div>
+                ))}
+              </div>
             ))}
           </motion.div>
-        </AnimatePresence>
+        </div>
 
         {/* Feedback Interactive Pagination Dots */}
         <div className="flex items-center justify-center gap-2 pt-8">
@@ -1024,19 +1029,18 @@ export default function HomePage() {
             return (
               <button
                 key={idx}
+                type="button"
                 onClick={() => setFeedbackPage(idx)}
                 aria-label={`Feedback page ${idx + 1}`}
-                className="relative py-2 px-1 cursor-pointer"
+                className="p-1 cursor-pointer flex items-center justify-center"
               >
-                {isActive ? (
-                  <motion.div
-                    layoutId="feedbackIndicator"
-                    className="w-8 h-2 bg-[#8A33FD] rounded-full shadow-sm"
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
-                ) : (
-                  <div className="w-2.5 h-2 bg-gray-300 hover:bg-gray-400 rounded-full transition-colors" />
-                )}
+                <span
+                  className={`block h-2 rounded-full transition-all duration-300 ${
+                    isActive
+                      ? 'w-8 bg-[#8A33FD] shadow-xs'
+                      : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
               </button>
             );
           })}
