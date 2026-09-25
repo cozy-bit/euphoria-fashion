@@ -603,14 +603,20 @@ export default function HomePage() {
             return (
               <div key={p.id} className="group flex flex-col gap-3">
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-[#F6F6F6]">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  <Link to={`/product/${p.id}`} className="block w-full h-full">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </Link>
                   {/* Heart Wishlist Button */}
                   <button
-                    onClick={() => toggleWishlist(p)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleWishlist(p);
+                    }}
                     aria-label="Toggle Wishlist"
                     className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow flex items-center justify-center text-[#3C4242] hover:text-[#8A33FD] transition-colors cursor-pointer"
                   >
@@ -621,12 +627,12 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex items-center justify-between pt-1">
-                  <div className="flex flex-col">
+                  <Link to={`/product/${p.id}`} className="flex flex-col">
                     <h4 className="text-sm font-bold text-[#3C4242] group-hover:text-[#8A33FD] transition-colors line-clamp-1">
                       {p.title}
                     </h4>
                     <span className="text-xs text-[#807D7E]">{p.brand}</span>
-                  </div>
+                  </Link>
                   <span className="px-3 py-1 rounded-lg bg-[#F6F6F6] text-sm font-bold text-[#3C4242]">
                     ${p.price.toFixed(2)}
                   </span>

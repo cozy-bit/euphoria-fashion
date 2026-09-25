@@ -259,15 +259,21 @@ export default function ProductsListPage() {
                   
                   {/* Image Container with Wishlist Badge */}
                   <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-[#F6F6F6] shadow-sm">
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+                    <Link to={`/product/${p.id}`} className="block w-full h-full">
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </Link>
 
                     {/* Heart Wishlist Icon Button */}
                     <button
-                      onClick={() => toggleWishlist(p)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleWishlist(p);
+                      }}
                       aria-label="Wishlist"
                       className="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-[#3C4242] hover:scale-110 active:scale-95 transition-all cursor-pointer z-10"
                     >
@@ -279,7 +285,11 @@ export default function ProductsListPage() {
                     {/* Quick Add To Cart Button on hover */}
                     <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       <button
-                        onClick={() => addToCart(p, 'M', p.colors?.[0] || '#252525')}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          addToCart(p, 'M', p.colors?.[0] || '#252525');
+                        }}
                         className="w-full py-2.5 rounded-xl bg-[#8A33FD] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg hover:bg-[#6610F2] transition-colors cursor-pointer"
                       >
                         <ShoppingCart className="w-4 h-4" />
@@ -290,12 +300,12 @@ export default function ProductsListPage() {
 
                   {/* Info Row: Title & Brand on Left, Price on Right */}
                   <div className="flex items-center justify-between pt-1">
-                    <div className="flex flex-col max-w-[70%]">
+                    <Link to={`/product/${p.id}`} className="flex flex-col max-w-[70%]">
                       <h4 className="text-sm sm:text-base font-bold text-[#3C4242] group-hover:text-[#8A33FD] transition-colors line-clamp-1">
                         {p.title}
                       </h4>
                       <span className="text-xs text-[#807D7E]">{p.brand}</span>
-                    </div>
+                    </Link>
 
                     <span className="px-3 py-1.5 rounded-lg bg-[#F6F6F6] text-sm font-extrabold text-[#3C4242]">
                       ${p.price.toFixed(2)}
