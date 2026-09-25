@@ -105,7 +105,7 @@ export default function ContactDetailsPage() {
           <div className={styles.addressHeader}>
             <h2 className={styles.sectionTitle}>Delivery Address</h2>
             <Link to="/profile/address/new" className={styles.addAddressBtn}>
-              + Add New Address
+              Edit Address
             </Link>
           </div>
 

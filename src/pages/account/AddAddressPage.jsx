@@ -58,8 +58,14 @@ export default function AddAddressPage() {
             <img src={icon} alt="Delivery Address" className={styles.icon} />
           </div>
           <div>
-            <h1 className={styles.title}>Add Delivery Address</h1>
-            <p className={styles.subtitle}>Enter a new address for orders and home deliveries</p>
+            <h1 className={styles.title}>
+              {user?.address?.street ? 'Edit Delivery Address' : 'Add Delivery Address'}
+            </h1>
+            <p className={styles.subtitle}>
+              {user?.address?.street
+                ? 'Update your address for orders and home deliveries'
+                : 'Enter an address for orders and home deliveries'}
+            </p>
           </div>
         </div>
 
