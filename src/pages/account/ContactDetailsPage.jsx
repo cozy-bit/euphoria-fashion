@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LogOut } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import defaultAvatar from '../../assets/images/tolibov/contact-details/user-profile-avatar.webp';
 import styles from './ContactDetails.module.css';
 
 export default function ContactDetailsPage() {
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, logout } = useAuth();
+  const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
     name: user?.name || '',
@@ -32,22 +34,39 @@ export default function ContactDetailsPage() {
     setTimeout(() => setSaved(false), 3500);
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate('/signin');
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         {/* Profile Header */}
         <div className={styles.header}>
-          <div className={styles.avatarWrapper}>
-            <img
-              src={user?.avatar || defaultAvatar}
-              alt={user?.name || 'User Profile'}
-              className={styles.avatar}
-            />
+          <div className={styles.headerLeft}>
+            <div className={styles.avatarWrapper}>
+              <img
+                src={user?.avatar || defaultAvatar}
+                alt={user?.name || 'User Profile'}
+                className={styles.avatar}
+              />
+            </div>
+            <div>
+              <h1 className={styles.title}>My Contact Details</h1>
+              <p className={styles.subtitle}>Manage your profile information and contact details</p>
+            </div>
           </div>
-          <div>
-            <h1 className={styles.title}>My Contact Details</h1>
-            <p className={styles.subtitle}>Manage your profile information and contact details</p>
-          </div>
+
+          <button
+            type="button"
+            onClick={handleLogout}
+            className={styles.logoutBtn}
+            title="Log out of your account"
+          >
+            <LogOut className="w-4 h-4" />
+            <span>Log Out</span>
+          </button>
         </div>
 
         {/* Success Alert */}
